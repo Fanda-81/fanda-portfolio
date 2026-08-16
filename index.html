@@ -1,877 +1,1535 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fanda Zeng — AI Product Manager</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg-primary:#FAF7F2;
-    --bg-card:#FFFFFF;
-    --text-primary:#1A1A1A;
-    --text-secondary:#5C5C5C;
-    --accent-yellow:#F4C430;
-    --accent-yellow-soft:#FCEFB4;
-    --divider:#E6E1D6;
-    --dark-section:#211F1C;
-    --serif:'Playfair Display',Georgia,serif;
-    --sans:'Inter','Helvetica Neue',Arial,sans-serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;scroll-padding-top:88px;}
-  body{background:var(--bg-primary);color:var(--text-primary);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
-  a{text-decoration:none;color:inherit;}
-  img{display:block;max-width:100%;}
-  .container{max-width:1240px;margin:0 auto;padding:0 24px;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fanda Zeng — AI 产品经理 / 数据产品经理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --text-primary: #1A1A1A;
+      --text-secondary: #5C5C5C;
+      --accent-yellow: #F4C430;
+      --accent-yellow-soft: #FCEFB4;
+      --divider: #E6E1D6;
+      --dark-section: #211F1C;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
 
-  /* ===== Header ===== */
-  header{position:fixed;top:0;left:0;right:0;height:88px;background:rgba(250,247,242,.92);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid rgba(230,225,214,.6);}
-  .header-inner{max-width:1240px;margin:0 auto;padding:0 24px;height:88px;display:flex;align-items:center;justify-content:space-between;}
-  .logo{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:600;font-size:20px;}
-  .logo-dot{width:34px;height:34px;border-radius:50%;background:var(--accent-yellow);}
-  nav{display:flex;gap:36px;}
-  nav a{font-size:15px;color:var(--text-secondary);transition:color .2s;}
-  nav a:hover,nav a.active{color:var(--text-primary);font-weight:500;}
-  .btn-pill{display:inline-flex;align-items:center;justify-content:center;background:var(--accent-yellow);color:var(--text-primary);border-radius:24px;font-weight:600;transition:transform .15s,box-shadow .2s;cursor:pointer;border:none;font-family:var(--sans);}
-  .btn-pill:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(244,196,48,.45);}
-  .header-cta{width:122px;height:44px;font-size:15px;}
-  .btn-outline{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--text-primary);border:2px solid var(--text-primary);border-radius:24px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--sans);}
-  .btn-outline:hover{background:var(--text-primary);color:#fff;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ===== Hero ===== */
-  .hero{padding:176px 0 96px;}
-  .hero-grid{display:flex;align-items:center;justify-content:space-between;gap:60px;}
-  .hero-copy{max-width:640px;}
-  .badge{display:inline-block;background:var(--accent-yellow-soft);border-radius:16px;padding:8px 18px;font-size:13px;font-weight:600;margin-bottom:34px;}
-  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(48px,6vw,78px);line-height:1.1;margin-bottom:18px;}
-  .hero .role{font-size:26px;font-weight:500;color:var(--text-secondary);margin-bottom:24px;}
-  .hero .desc{font-size:17px;color:var(--text-secondary);max-width:540px;margin-bottom:40px;}
-  .hero-actions{display:flex;gap:16px;}
-  .hero-actions .btn-pill{width:159px;height:48px;font-size:15px;}
-  .hero-actions .btn-outline{width:147px;height:48px;font-size:15px;}
-  .hero-avatar{position:relative;width:420px;height:420px;flex-shrink:0;}
-  .hero-avatar .ring{position:absolute;inset:0;border:1.5px solid var(--accent-yellow);border-radius:50%;opacity:.55;transform:translate(10px,10px);width:400px;height:400px;}
-  .hero-avatar .photo{position:absolute;width:380px;height:380px;border-radius:50%;overflow:hidden;top:20px;left:20px;}
-  .hero-avatar .photo img{width:100%;height:100%;object-fit:cover;}
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
 
-  /* ===== Section common ===== */
-  section{padding:96px 0;}
-  .section-label{font-size:14px;font-weight:700;color:var(--accent-yellow);letter-spacing:.08em;text-transform:uppercase;}
-  .section-title{font-family:var(--serif);font-weight:600;font-size:clamp(32px,4vw,44px);line-height:1.25;margin:12px 0 0;}
-  .section-head.center{text-align:center;margin-bottom:56px;}
-  .section-head.center .section-desc{max-width:520px;margin:22px auto 0;color:var(--text-secondary);font-size:16px;}
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* ===== Services ===== */
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-  .card{background:var(--bg-card);border-radius:18px;padding:36px 32px;box-shadow:0 4px 24px rgba(26,26,26,.05);}
-  .icon-circle{width:64px;height:64px;border-radius:50%;background:var(--accent-yellow);display:flex;align-items:center;justify-content:center;margin-bottom:26px;}
-  .icon-circle svg{width:28px;height:28px;stroke:#1A1A1A;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-  .card h3{font-size:22px;font-weight:700;margin-bottom:14px;}
-  .card p{font-size:15px;color:var(--text-secondary);}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-  /* ===== Brands ===== */
-  .brands{padding:40px 0 72px;}
-  .brands-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
-  .brands-row span{font-size:22px;font-weight:600;color:#B8B2A4;letter-spacing:.04em;}
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
-  /* ===== About ===== */
-  .about-grid{display:flex;align-items:center;gap:100px;}
-  .about-photo{position:relative;width:460px;height:460px;flex-shrink:0;}
-  .about-photo .photo{width:420px;height:420px;border-radius:50%;overflow:hidden;position:absolute;top:20px;left:20px;}
-  .about-photo .photo img{width:100%;height:100%;object-fit:cover;}
-  .about-photo .ring{position:absolute;inset:0;border:1.5px solid var(--accent-yellow);border-radius:50%;opacity:.55;}
-  .about-copy p{color:var(--text-secondary);font-size:16px;margin:26px 0 34px;max-width:640px;}
-  .about-copy .btn-pill{width:168px;height:46px;font-size:15px;}
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-  /* ===== Works ===== */
-  .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-  .work-card .cover{height:320px;border-radius:16px;overflow:hidden;margin-bottom:18px;}
-  .work-card .cover img{width:100%;height:100%;object-fit:cover;transition:transform .35s;}
-  .work-card:hover .cover img{transform:scale(1.04);}
-  .work-tag{display:inline-block;background:var(--accent-yellow-soft);border-radius:14px;padding:6px 14px;font-size:12px;font-weight:600;margin-bottom:12px;}
-  .work-card h3{font-size:20px;font-weight:700;}
+    /* ===== Header ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 88px;
+      background: rgba(250, 247, 242, .92);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(230, 225, 214, .6);
+    }
 
-  /* ===== Testimonial ===== */
-  .testimonial{text-align:center;}
-  .testimonial blockquote{font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.6vw,30px);line-height:1.5;max-width:880px;margin:0 auto 36px;}
-  .testimonial-author{display:inline-flex;align-items:center;gap:14px;}
-  .testimonial-author img{width:44px;height:44px;border-radius:50%;object-fit:cover;}
-  .testimonial-author .name{font-size:15px;font-weight:700;}
-  .testimonial-author .role{font-size:13px;color:var(--text-secondary);}
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  /* ===== GitHub ===== */
-  .github{text-align:center;}
-  .github .section-title{font-size:clamp(28px,3.4vw,40px);}
-  .heatmap-wrap{margin:40px auto 24px;max-width:904px;overflow-x:auto;}
-  .heatmap-wrap svg{width:100%;height:auto;}
-  .legend{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);}
-  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block;}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 20px;
+    }
 
-  /* ===== Skills ===== */
-  .skills-grid{display:flex;gap:80px;align-items:flex-start;}
-  .skills-photo{position:relative;width:400px;height:400px;flex-shrink:0;}
-  .skills-photo .photo{width:360px;height:360px;border-radius:50%;overflow:hidden;position:absolute;top:20px;left:20px;}
-  .skills-photo .photo img{width:100%;height:100%;object-fit:cover;}
-  .skills-photo .deco{position:absolute;left:0;bottom:0;width:90px;height:90px;border-radius:50%;background:var(--accent-yellow-soft);}
-  .skills-list{flex:1;padding-top:30px;}
-  .skill{margin-bottom:40px;}
-  .skill-head{display:flex;justify-content:space-between;margin-bottom:10px;}
-  .skill-head .name{font-size:16px;font-weight:600;}
-  .skill-head .pct{font-size:14px;color:var(--text-secondary);}
-  .track{height:8px;border-radius:4px;background:#EBE6DC;overflow:hidden;}
-  .fill{height:100%;border-radius:4px;background:var(--accent-yellow);}
+    .logo-dot {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent-yellow);
+    }
 
-  /* ===== FAQ ===== */
-  .faq-list{display:flex;flex-direction:column;gap:20px;}
-  .faq-item{background:var(--bg-card);border-radius:16px;padding:24px 26px;box-shadow:0 4px 20px rgba(26,26,26,.04);}
-  .faq-item h3{font-size:17px;font-weight:600;margin-bottom:10px;}
-  .faq-item p{font-size:15px;color:var(--text-secondary);}
+    nav {
+      display: flex;
+      gap: 36px;
+    }
 
-  /* ===== Awards & Blog ===== */
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
-  .col-title{font-family:var(--serif);font-weight:600;font-size:40px;margin:10px 0 34px;}
-  .award-item{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--divider);}
-  .award-item:last-child{border-bottom:none;}
-  .award-year{font-size:15px;font-weight:700;color:var(--accent-yellow);min-width:45px;}
-  .award-name{font-size:16px;font-weight:600;}
-  .award-sub{font-size:13px;color:var(--text-secondary);}
-  .blog-card{display:flex;gap:22px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--divider);}
-  .blog-card:last-child{border-bottom:none;}
-  .blog-thumb{width:84px;height:84px;border-radius:14px;background:var(--accent-yellow-soft);flex-shrink:0;}
-  .blog-date{font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;}
-  .blog-title{font-size:17px;font-weight:600;}
+    nav a {
+      font-size: 15px;
+      color: var(--text-secondary);
+      transition: color .2s;
+    }
 
-  /* ===== Contact ===== */
-  .contact{text-align:center;}
-  .contact .section-title{font-size:clamp(32px,4.2vw,48px);}
-  .contact .desc{font-size:17px;color:var(--text-secondary);margin:24px auto 40px;max-width:560px;}
-  .contact-email{width:258px;height:57px;font-size:17px;margin:0 auto 36px;}
-  .socials{display:flex;justify-content:center;gap:16px;}
-  .social{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--divider);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--text-secondary);transition:all .2s;}
-  .social:hover{background:var(--accent-yellow);border-color:var(--accent-yellow);color:var(--text-primary);}
+    nav a:hover,
+    nav a.active {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
 
-  /* ===== Footer ===== */
-  footer{background:var(--dark-section);padding:70px 0 40px;color:#C9C4BA;}
-  .footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px;}
-  .footer-brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:600;font-size:20px;color:#fff;}
-  .footer-brand .dot{width:30px;height:30px;border-radius:50%;background:var(--accent-yellow);}
-  .footer-nav{display:flex;gap:34px;font-size:14px;}
-  .footer-nav a{color:#C9C4BA;transition:color .2s;}
-  .footer-nav a:hover{color:#fff;}
-  .footer-divider{height:1px;background:#3A3A38;margin-bottom:26px;}
-  .footer-bottom{display:flex;justify-content:space-between;font-size:13px;color:#8A8578;}
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-yellow);
+      color: var(--text-primary);
+      border-radius: 24px;
+      font-weight: 600;
+      transition: transform .15s, box-shadow .2s;
+      cursor: pointer;
+      border: none;
+      font-family: var(--sans);
+    }
 
-  /* ===== Responsive ===== */
-  @media (max-width:1080px){
-    .hero-grid,.about-grid,.skills-grid{flex-direction:column;gap:48px;}
-    .hero-avatar{order:-1;}
-    .cards,.works-grid{grid-template-columns:1fr 1fr;}
-    .two-col{grid-template-columns:1fr;gap:48px;}
-  }
-  @media (max-width:680px){
-    .cards,.works-grid{grid-template-columns:1fr;}
-    nav{display:none;}
-    .hero{padding-top:130px;}
-    .about-photo,.skills-photo,.hero-avatar{width:100%;max-width:420px;height:auto;aspect-ratio:1;}
-  }
-</style>
+    .btn-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(244, 196, 48, .45);
+    }
+
+    .header-cta {
+      width: 122px;
+      height: 44px;
+      font-size: 15px;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--text-primary);
+      border-radius: 24px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .15s;
+      font-family: var(--sans);
+    }
+
+    .btn-outline:hover {
+      background: var(--text-primary);
+      color: #fff;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 176px 0 96px;
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent-yellow-soft);
+      border-radius: 16px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 34px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .hero .role {
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .hero .desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-actions .btn-pill {
+      width: 159px;
+      height: 48px;
+      font-size: 15px;
+    }
+
+    .hero-actions .btn-outline {
+      width: 147px;
+      height: 48px;
+      font-size: 15px;
+    }
+
+    .hero-avatar {
+      position: relative;
+      width: 420px;
+      height: 420px;
+      flex-shrink: 0;
+    }
+
+    .hero-avatar .ring {
+      position: absolute;
+      inset: 0;
+      border: 1.5px solid var(--accent-yellow);
+      border-radius: 50%;
+      opacity: .55;
+      transform: translate(10px, 10px);
+      width: 390px;
+      height: 400px;
+    }
+
+    .hero-avatar .photo {
+      position: absolute;
+      width: 370px;
+      height: 380px;
+      border-radius: 50%;
+      overflow: hidden;
+      top: 20px;
+      left: 20px;
+    }
+
+    .hero-avatar .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== Section common ===== */
+    section {
+      padding: 96px 0;
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(32px, 4vw, 44px);
+      line-height: 1.25;
+      margin: 12px 0 0;
+    }
+
+    .section-head.center {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-head.center .section-desc {
+      max-width: 520px;
+      margin: 22px auto 0;
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
+
+    /* ===== Services ===== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      padding: 36px 32px;
+      box-shadow: 0 4px 24px rgba(26, 26, 26, .05);
+    }
+
+    .icon-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--accent-yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 26px;
+    }
+
+    .icon-circle svg {
+      width: 28px;
+      height: 28px;
+      stroke: #1A1A1A;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* ===== Brands ===== */
+    .brands {
+      padding: 40px 0 72px;
+    }
+
+    .brands-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .brands-row span {
+      font-size: 22px;
+      font-weight: 600;
+      color: #B8B2A4;
+      letter-spacing: .04em;
+    }
+
+    /* ===== About ===== */
+    .about-grid {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+    }
+
+    .about-photo {
+      position: relative;
+      width: 460px;
+      height: 460px;
+      flex-shrink: 0;
+    }
+
+    .about-photo .photo {
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .about-photo .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-photo .ring {
+      position: absolute;
+      inset: 0;
+      border: 1.5px solid var(--accent-yellow);
+      border-radius: 50%;
+      opacity: .55;
+    }
+
+    .about-copy p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      margin: 26px 0 34px;
+      max-width: 640px;
+    }
+
+    .about-copy .btn-pill {
+      width: 168px;
+      height: 46px;
+      font-size: 15px;
+    }
+
+    /* ===== Works ===== */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .work-card .cover {
+      height: 320px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .work-card .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s;
+    }
+
+    .work-card:hover .cover img {
+      transform: scale(1.04);
+    }
+
+    .work-tag {
+      display: inline-block;
+      background: var(--accent-yellow-soft);
+      border-radius: 14px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .work-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* ===== Testimonial ===== */
+    .testimonial {
+      text-align: center;
+    }
+
+    .testimonial blockquote {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(22px, 2.6vw, 30px);
+      line-height: 1.5;
+      max-width: 880px;
+      margin: 0 auto 36px;
+    }
+
+    .testimonial-author {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author .name {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .testimonial-author .role {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ===== GitHub ===== */
+    .github {
+      text-align: center;
+    }
+
+    .github .section-title {
+      font-size: clamp(28px, 3.4vw, 40px);
+    }
+
+    .heatmap-wrap {
+      margin: 40px auto 24px;
+      max-width: 904px;
+      overflow-x: auto;
+    }
+
+    .heatmap-wrap svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .legend {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .legend i {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    /* ===== Skills ===== */
+    .skills-grid {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .skills-photo {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      flex-shrink: 0;
+    }
+
+    .skills-photo .photo {
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .skills-photo .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .skills-photo .deco {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--accent-yellow-soft);
+    }
+
+    .skills-list {
+      flex: 1;
+      padding-top: 30px;
+    }
+
+    .skill {
+      margin-bottom: 40px;
+    }
+
+    .skill-head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .skill-head .name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .skill-head .pct {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .track {
+      height: 8px;
+      border-radius: 4px;
+      background: #EBE6DC;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--accent-yellow);
+    }
+
+    /* ===== FAQ ===== */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 24px 26px;
+      box-shadow: 0 4px 20px rgba(26, 26, 26, .04);
+    }
+
+    .faq-item h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .faq-item p {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* ===== Awards & Blog ===== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .col-title {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 40px;
+      margin: 10px 0 34px;
+    }
+
+    .award-item {
+      display: flex;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .award-item:last-child {
+      border-bottom: none;
+    }
+
+    .award-year {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      min-width: 45px;
+    }
+
+    .award-name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .award-sub {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .blog-card {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .blog-card:last-child {
+      border-bottom: none;
+    }
+
+    .blog-thumb {
+      width: 84px;
+      height: 84px;
+      border-radius: 14px;
+      background: var(--accent-yellow-soft);
+      flex-shrink: 0;
+    }
+
+    .blog-date {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .blog-title {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    /* ===== Contact ===== */
+    .contact {
+      text-align: center;
+    }
+
+    .contact .section-title {
+      font-size: clamp(32px, 4.2vw, 48px);
+    }
+
+    .contact .desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin: 24px auto 40px;
+      max-width: 560px;
+    }
+
+    .contact-email {
+      width: 258px;
+      height: 57px;
+      font-size: 17px;
+      margin: 0 auto 36px;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .social {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: all .2s;
+    }
+
+    .social:hover {
+      background: var(--accent-yellow);
+      border-color: var(--accent-yellow);
+      color: var(--text-primary);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--dark-section);
+      padding: 70px 0 40px;
+      color: #C9C4BA;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 44px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .footer-brand .dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-yellow);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 34px;
+      font-size: 14px;
+    }
+
+    .footer-nav a {
+      color: #C9C4BA;
+      transition: color .2s;
+    }
+
+    .footer-nav a:hover {
+      color: #fff;
+    }
+
+    .footer-divider {
+      height: 1px;
+      background: #3A3A38;
+      margin-bottom: 26px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #8A8578;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width:1080px) {
+
+      .hero-grid,
+      .about-grid,
+      .skills-grid {
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      .hero-avatar {
+        order: -1;
+      }
+
+      .cards,
+      .works-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    @media (max-width:680px) {
+
+      .cards,
+      .works-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .about-photo,
+      .skills-photo,
+      .hero-avatar {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        aspect-ratio: 1;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ================= Header ================= -->
-<header>
-  <div class="header-inner">
-    <a href="#home" class="logo"><span class="logo-dot"></span>Fanda Zeng</a>
-    <nav id="mainNav">
-      <a href="#home" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#works">Works</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a href="#contact" class="btn-pill header-cta">Let's Talk</a>
-  </div>
-</header>
+  <!-- ================= Header ================= -->
+  <header>
+    <div class="header-inner">
+      <a href="#home" class="logo"><span class="logo-dot"></span>Fanda Zeng</a>
+      <nav id="mainNav">
+        <a href="#home" class="active">首页</a>
+        <a href="#about">关于</a>
+        <a href="#services">能力</a>
+        <a href="#works">作品</a>
+        <a href="#contact">联系</a>
+      </nav>
+      <a href="#contact" class="btn-pill header-cta">聊聊</a>
+    </div>
+  </header>
 
-<!-- ================= Hero ================= -->
-<section class="hero" id="home">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <span class="badge">Open to opportunities</span>
-      <h1>Fanda Zeng</h1>
-      <div class="role">AI Product Manager / Data Product Manager</div>
-      <p class="desc">Economics &amp; Statistics graduate from the University of Sydney. I build data-driven solutions end-to-end — from data collection and modelling to visualization and actionable business recommendations.</p>
-      <div class="hero-actions">
-        <a href="Fanda-Zeng-CV.docx" class="btn-pill" download>Download CV</a>
-        <a href="#works" class="btn-outline">View Works</a>
-      </div>
-    </div>
-    <div class="hero-avatar">
-      <div class="ring"></div>
-      <!-- [可替换图片] Hero 区域个人头像，建议尺寸 600×600px，正方形 -->
-      <div class="photo"><img src="assets/hero-portrait.png" alt="Portrait of Fanda Zeng"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= Services ================= -->
-<section id="services">
-  <div class="container">
-    <div class="section-head center">
-      <div class="section-label">Services</div>
-      <h2 class="section-title">Capabilities</h2>
-      <p class="section-desc">Bridging data and product — turning raw numbers into decisions that move the needle.</p>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <div class="icon-circle">
-          <svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l3-3 4 4 5-6"/><path d="M18 8h3v3"/></svg>
+  <!-- ================= Hero ================= -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="badge">开放机会中</span>
+        <h1>Fanda Zeng</h1>
+        <div class="role">AI 产品经理 / 数据产品经理</div>
+        <p class="desc">悉尼大学经济与统计专业毕业。具备从数据采集、建模到可视化与业务落地的端到端能力。</p>
+        <div class="hero-actions">
+          <a href="Fanda-Zeng-CV.docx" class="btn-pill" download>下载简历</a>
+          <a href="#works" class="btn-outline">查看作品</a>
         </div>
-        <h3>Data Analysis &amp; Modelling</h3>
-        <p>Data cleaning, statistical modelling and regression analysis using Python, R and SQL — from raw datasets to validated insights.</p>
       </div>
-      <div class="card">
-        <div class="icon-circle">
-          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3M2 9h20"/><path d="M6 13h4M6 16h7"/></svg>
+      <div class="hero-avatar">
+        <div class="ring"></div>
+        <!-- [可替换图片] Hero 区域个人头像，建议尺寸 600×600px，正方形 -->
+        <div class="photo"><img src="assets/fanda.png" alt="Portrait of Fanda Zeng"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Services ================= -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head center">
+        <div class="section-label">服务</div>
+        <h2 class="section-title">能力</h2>
+        <p class="section-desc">让数据与产品对话 —— 把原始数字变成推动业务的关键决策。</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 3v18h18M7 14l3-3 4 4 5-6" />
+              <path d="M18 8h3v3" />
+            </svg>
+          </div>
+          <h3>数据分析与建模</h3>
+          <p>使用 Python、R 和 SQL 进行数据清洗、统计建模与回归分析 —— 从原始数据集到可验证的业务洞察。</p>
         </div>
-        <h3>Data Visualization</h3>
-        <p>Interactive dashboards in Tableau and Excel — monitoring GMV, conversion rates and subsidy ratios with multi-dimensional drill-down.</p>
-      </div>
-      <div class="card">
-        <div class="icon-circle">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3c-3 3.5-3 14.5 0 18M3 12h18M5 6.5c4 2.5 10 2.5 14 0M5 17.5c4-2.5 10-2.5 14 0"/></svg>
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 18v3M2 9h20" />
+              <path d="M6 13h4M6 16h7" />
+            </svg>
+          </div>
+          <h3>数据可视化</h3>
+          <p>在 Tableau 与 Excel 中搭建可交互仪表板，监控 GMV、转化率与补贴占比，支持多维度下钻分析。</p>
         </div>
-        <h3>Product Thinking</h3>
-        <p>Translating business needs into data-driven product strategies — cross-functional collaboration from requirements to delivery.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= Brands ================= -->
-<div class="brands">
-  <div class="container brands-row">
-    <span>University of Sydney</span><span>Zhongyuan Securities</span><span>Sydney Kismet Club</span><span>Meituan</span><span>Ele.me</span>
-  </div>
-</div>
-
-<!-- ================= About ================= -->
-<section id="about">
-  <div class="container about-grid">
-    <div class="about-photo">
-      <div class="ring"></div>
-      <!-- [可替换图片] About 区域个人照片，建议尺寸 600×600px，正方形 -->
-      <div class="photo"><img src="assets/about-photo.png" alt="Fanda at work"></div>
-    </div>
-    <div class="about-copy">
-      <div class="section-label">About</div>
-      <h2 class="section-title">About Me</h2>
-      <p>With a dual background in Economics and Statistics from the University of Sydney (2024 QS World #20), I combine analytical rigour with product thinking. I've built end-to-end capabilities across data collection, modelling, visualization and business strategy — from monitoring sales metrics at Zhongyuan Securities to growing a 500+ member community from scratch at Sydney Kismet Club.</p>
-      <a href="#contact" class="btn-pill">Get In Touch</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= Works ================= -->
-<section id="works">
-  <div class="container">
-    <div class="section-head center">
-      <div class="section-label">Works</div>
-      <h2 class="section-title">Featured Projects</h2>
-    </div>
-    <div class="works-grid">
-      <div class="work-card">
-        <!-- [可替换图片] 作品1封面图，建议尺寸 800×500px，横向 -->
-        <div class="cover"><img src="assets/work-1-ecommerce.png" alt="E-commerce Data Dashboard"></div>
-        <span class="work-tag">Tableau &amp; Excel</span>
-        <h3>E-commerce Data Analysis &amp; Visualization</h3>
-      </div>
-      <div class="work-card">
-        <!-- [可替换图片] 作品2封面图，建议尺寸 800×500px，横向 -->
-        <div class="cover"><img src="assets/work-2-research.png" alt="Statistical Research"></div>
-        <span class="work-tag">R &amp; Statistics</span>
-        <h3>Cross-disciplinary Health Statistics</h3>
-      </div>
-      <div class="work-card">
-        <!-- [可替换图片] 作品3封面图，建议尺寸 800×500px，横向 -->
-        <div class="cover"><img src="assets/work-3-community.png" alt="Community Growth"></div>
-        <span class="work-tag">Operations</span>
-        <h3>Sydney Kismet Club — 0 to 500+ Users</h3>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= Highlight ================= -->
-<section class="testimonial">
-  <div class="container">
-    <blockquote>&ldquo;Identified 3 high-potential stores and 2 platform-preference patterns from 100K+ records — driving a ~15% ROI improvement through data-backed strategy.&rdquo;</blockquote>
-    <div class="testimonial-author">
-      <!-- [可替换图片] 引言区域头像，建议尺寸 200×200px，正方形 -->
-      <img src="assets/testimonial-avatar.png" alt="Fanda Zeng">
-      <div>
-        <div class="name">Fanda Zeng</div>
-        <div class="role">E-commerce Analytics Project, 2024</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= GitHub Activity ================= -->
-<section class="github" id="github">
-  <div class="container">
-    <div class="section-label">GitHub Activity</div>
-    <h2 class="section-title">Code Contributions</h2>
-    <div class="heatmap-wrap">
-      <svg width="904" height="130" viewBox="0 0 904 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-<text x="0" y="44" font-family="Inter, sans-serif" font-size="9" fill="#9A9588">Mon</text>
-<text x="0" y="76" font-family="Inter, sans-serif" font-size="9" fill="#9A9588">Wed</text>
-<text x="0" y="108" font-family="Inter, sans-serif" font-size="9" fill="#9A9588">Fri</text>
-<text x="30" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Aug</text>
-<text x="110" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Sep</text>
-<text x="174" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Oct</text>
-<text x="238" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Nov</text>
-<text x="318" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Dec</text>
-<text x="382" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Jan</text>
-<text x="446" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Feb</text>
-<text x="510" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Mar</text>
-<text x="590" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Apr</text>
-<text x="654" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">May</text>
-<text x="734" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Jun</text>
-<text x="798" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Jul</text>
-<text x="862" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">Aug</text>
-<rect x="30" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="30" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="30" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="30" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="30" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="30" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="30" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="46" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="46" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="46" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="46" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="46" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="46" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="46" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="62" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="62" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="62" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="62" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="62" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="62" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="62" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="78" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="78" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="78" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="78" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="78" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="78" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="78" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="94" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="94" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="94" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="94" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="94" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="94" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="94" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="110" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="110" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="110" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="110" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="110" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="110" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="110" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="126" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="126" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="126" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="126" y="50" width="13" height="13" rx="2" fill="#FCEFB4"/>
-<rect x="126" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="126" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="126" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="142" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="142" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="142" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="142" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="142" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="142" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="142" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="158" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="158" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="158" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="158" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="158" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="158" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="158" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="174" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="174" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="174" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="174" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="174" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="174" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="174" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="190" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="190" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="190" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="190" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="190" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="190" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="190" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="206" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="206" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="206" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="206" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="206" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="206" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="206" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="222" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="222" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="222" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="222" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="222" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="222" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="222" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="238" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="238" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="238" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="238" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="238" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="238" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="238" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="254" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="254" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="254" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="254" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="254" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="254" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="254" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="270" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="270" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="270" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="270" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="270" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="270" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="270" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="286" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="286" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="286" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="286" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="286" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="286" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="286" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="302" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="302" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="302" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="302" y="50" width="13" height="13" rx="2" fill="#FCEFB4"/>
-<rect x="302" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="302" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="302" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="318" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="318" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="318" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="318" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="318" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="318" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="318" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="334" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="334" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="334" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="334" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="334" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="334" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="334" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="350" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="350" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="350" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="350" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="350" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="350" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="350" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="366" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="366" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="366" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="366" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="366" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="366" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="366" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="382" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="382" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="382" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="382" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="382" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="382" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="382" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="398" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="398" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="398" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="398" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="398" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="398" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="398" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="414" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="414" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="414" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="414" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="414" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="414" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="414" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="430" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="430" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="430" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="430" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="430" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="430" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="430" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="446" y="114" width="13" height="13" rx="2" fill="#F4D76B"/>
-<rect x="446" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="446" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="446" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="446" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="446" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="446" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="462" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="462" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="462" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="462" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="462" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="462" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="462" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="478" y="114" width="13" height="13" rx="2" fill="#E8C030"/>
-<rect x="478" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="478" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="478" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="478" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="478" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="478" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="494" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="494" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="494" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="494" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="494" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="494" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="494" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="510" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="510" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="510" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="510" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="510" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="510" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="510" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="526" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="526" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="526" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="526" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="526" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="526" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="526" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="542" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="542" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="542" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="542" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="542" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="542" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="542" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="558" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="558" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="558" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="558" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="558" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="558" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="558" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="574" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="574" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="574" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="574" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="574" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="574" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="574" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="590" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="590" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="590" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="590" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="590" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="590" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="590" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="606" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="606" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="606" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="606" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="606" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="606" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="606" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="622" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="622" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="622" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="622" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="622" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="622" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="622" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="638" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="638" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="638" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="638" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="638" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="638" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="638" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="654" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="654" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="654" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="654" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="654" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="654" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="654" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="670" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="670" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="670" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="670" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="670" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="670" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="670" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="686" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="686" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="686" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="686" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="686" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="686" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="686" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="702" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="702" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="702" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="702" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="702" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="702" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="702" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="718" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="718" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="718" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="718" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="718" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="718" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="718" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="734" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="734" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="734" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="734" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="734" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="734" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="734" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="750" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="750" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="750" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="750" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="750" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="750" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="750" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="766" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="766" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="766" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="766" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="766" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="766" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="766" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="782" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="782" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="782" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="782" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="782" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="782" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="782" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="798" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="798" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="798" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="798" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="798" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="798" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="798" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="814" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="814" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="814" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="814" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="814" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="814" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="814" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="830" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="830" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="830" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="830" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="830" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="830" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="830" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="846" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="846" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="846" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="846" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="846" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="846" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="846" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="862" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="862" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="862" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="862" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="862" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="862" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="862" y="98" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="878" y="114" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="878" y="18" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="878" y="34" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="878" y="50" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="878" y="66" width="13" height="13" rx="2" fill="#EBE6DC"/>
-<rect x="878" y="82" width="13" height="13" rx="2" fill="#EBE6DC"/>
-</svg>
-    </div>
-    <div class="legend">
-      Less
-      <i style="background:#EBE6DC"></i><i style="background:#FCEFB4"></i><i style="background:#F4D76B"></i><i style="background:#E8C030"></i><i style="background:#C4930D"></i>
-      More
-    </div>
-  </div>
-</section>
-
-<!-- ================= Skills ================= -->
-<section id="skills">
-  <div class="container">
-    <div class="section-label">My Expertise</div>
-    <h2 class="section-title">Skills &amp; Tools</h2>
-    <div class="skills-grid" style="margin-top:48px;">
-      <div class="skills-photo">
-        <!-- [可替换图片] Skills 区域配图，建议尺寸 600×600px，正方形 -->
-        <div class="photo"><img src="assets/skills-photo.png" alt="Design tools"></div>
-        <div class="deco"></div>
-      </div>
-      <div class="skills-list">
-        <div class="skill">
-          <div class="skill-head"><span class="name">Python, R &amp; SQL</span><span class="pct">90%</span></div>
-          <div class="track"><div class="fill" style="width:90%"></div></div>
-        </div>
-        <div class="skill">
-          <div class="skill-head"><span class="name">Tableau &amp; Excel Visualization</span><span class="pct">92%</span></div>
-          <div class="track"><div class="fill" style="width:92%"></div></div>
-        </div>
-        <div class="skill">
-          <div class="skill-head"><span class="name">Statistical Modelling &amp; Regression</span><span class="pct">85%</span></div>
-          <div class="track"><div class="fill" style="width:85%"></div></div>
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 3c-3 3.5-3 14.5 0 18M3 12h18M5 6.5c4 2.5 10 2.5 14 0M5 17.5c4-2.5 10-2.5 14 0" />
+            </svg>
+          </div>
+          <h3>产品思维</h3>
+          <p>把业务需求翻译成数据驱动的产品策略 —— 从需求梳理到落地的全链路跨职能协作。</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= FAQ ================= -->
-<section id="faq">
-  <div class="container">
-    <div class="section-head center">
-      <div class="section-label">FAQ</div>
-      <h2 class="section-title">Feel Free To Ask Anything</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <h3>What is your educational background?</h3>
-        <p>Bachelor of Economics from the University of Sydney (2024 QS World #20), with a dual major in Economics and Statistics, graduated December 2023.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What tools do you use for data analysis?</h3>
-        <p>Python and R for statistical modelling, SQL for data querying, Tableau and Excel for visualization and dashboarding. I also have basic Java programming skills.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What languages do you speak?</h3>
-        <p>Native Mandarin Chinese, professional-level English, and basic conversational Spanish.</p>
-      </div>
+  <!-- ================= Brands ================= -->
+  <div class="brands">
+    <div class="container brands-row">
+      <span>University of Sydney</span><span>Zhongyuan Securities</span><span>Sydney Kismet
+        Club</span><span>Meituan</span><span>Ele.me</span>
     </div>
   </div>
-</section>
 
-<!-- ================= Awards & Blog ================= -->
-<section id="awards">
-  <div class="container two-col">
-    <div>
-      <div class="section-label">Experience &amp; Achievements</div>
-      <h2 class="col-title">Work History</h2>
-      <div class="award-item">
-        <span class="award-year">2024</span>
-        <div><div class="award-name">E-commerce Data Analysis Project</div><div class="award-sub">100K+ records · Tableau &amp; Excel · ~15% ROI lift</div></div>
+  <!-- ================= About ================= -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-photo">
+        <div class="ring"></div>
+        <!-- [可替换图片] About 区域个人照片，建议尺寸 600×600px，正方形 -->
+        <div class="photo"><img src="assets/about-photo.png" alt="Fanda at work"></div>
       </div>
-      <div class="award-item">
-        <span class="award-year">2023</span>
-        <div><div class="award-name">Statistics Research — HD Grade</div><div class="award-sub">University of Sydney · R · Linear &amp; GAM regression</div></div>
-      </div>
-      <div class="award-item">
-        <span class="award-year">2021</span>
-        <div><div class="award-name">Sydney Kismet Club — Founder</div><div class="award-sub">0 to 500+ members · 50K+ impressions</div></div>
-      </div>
-      <div class="award-item">
-        <span class="award-year">2021</span>
-        <div><div class="award-name">Zhongyuan Securities — Data Analyst Intern</div><div class="award-sub">Sales monitoring · 100+ livestream reports</div></div>
+      <div class="about-copy">
+        <div class="section-label">关于</div>
+        <h2 class="section-title">关于我</h2>
+        <p>悉尼大学（2024 QS 世界 #20）经济与统计双背景，让我兼具分析严谨性与产品思维。我建立了端到端的能力闭环：从中原证券的销售数据监控，到从零打造 500+ 成员的悉尼 Kismet Club
+          社群，横跨数据采集、建模、可视化与业务策略。</p>
+        <a href="#contact" class="btn-pill">联系我</a>
       </div>
     </div>
-    <div>
-      <div class="section-label">Education &amp; Skills</div>
-      <h2 class="col-title">Background</h2>
-      <div class="blog-card">
-        <div class="blog-thumb"></div>
+  </section>
+
+  <!-- ================= Works ================= -->
+  <section id="works">
+    <div class="container">
+      <div class="section-head center">
+        <div class="section-label">作品</div>
+        <h2 class="section-title">精选项目</h2>
+      </div>
+      <div class="works-grid">
+        <div class="work-card">
+          <!-- [可替换图片] 作品1封面图，建议尺寸 800×500px，横向 -->
+          <div class="cover"><img src="assets/work-1-ecommerce.png" alt="Business Operations Dashboard"></div>
+          <span class="work-tag">Tableau &amp; Excel</span>
+          <h3>电商数据分析与可视化</h3>
+        </div>
+        <div class="work-card">
+          <!-- [可替换图片] 作品2封面图，建议尺寸 800×500px，横向 -->
+          <div class="cover"><img src="assets/work-2-research.png" alt="Correlation Heatmap"></div>
+          <span class="work-tag">R &amp; 统计</span>
+          <h3>跨学科健康统计研究</h3>
+        </div>
+        <div class="work-card">
+          <!-- [可替换图片] 作品3封面图，建议尺寸 800×500px，横向 -->
+          <div class="cover"><img src="assets/work-3-community.png" alt="Community Growth"></div>
+          <span class="work-tag">运营</span>
+          <h3>Sydney Kismet Club —— 从 0 到 500+ 用户</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Highlight ================= -->
+  <section class="testimonial">
+    <div class="container">
+      <blockquote>&ldquo;从 10 万+ 条记录中识别出 3 家高潜力门店和 2 类平台偏好模式 —— 以数据驱动策略带来约 15% 的 ROI 提升。&rdquo;</blockquote>
+      <div class="testimonial-author">
+        <!-- [可替换图片] 引言区域头像，建议尺寸 200×200px，正方形 -->
+        <img src="assets/testimonial-avatar.png" alt="Fanda Zeng">
         <div>
-          <div class="blog-date">2019 – 2023 &middot; Sydney, Australia</div>
-          <div class="blog-title">University of Sydney — BEc, Economics &amp; Statistics</div>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-thumb"></div>
-        <div>
-          <div class="blog-date">Tools &middot; Daily use</div>
-          <div class="blog-title">Python · R · SQL · Tableau · Excel · Java</div>
+          <div class="name">Fanda Zeng</div>
+          <div class="role">电商分析项目，2024</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= Contact ================= -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="section-label">Contact</div>
-    <h2 class="section-title">Have a project in mind?</h2>
-    <p class="desc">Always open to discussing AI product, data analytics and new opportunities. Let's connect!</p>
-    <a href="mailto:zengfanda8147@163.com" class="btn-pill contact-email">zengfanda8147@163.com</a>
-    <div class="socials">
-      <a href="https://github.com/Fanda-81" class="social" title="GitHub">Gh</a>
-      <a href="mailto:zengfanda8147@163.com" class="social" title="Email">Em</a>
-      <a href="tel:15564163107" class="social" title="Phone">Ph</a>
-      <a href="#" class="social" title="LinkedIn">In</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= Footer ================= -->
-<footer>
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand"><span class="dot"></span>Fanda Zeng</div>
-      <div class="footer-nav">
-        <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#works">Works</a><a href="#contact">Contact</a>
+  <!-- ================= GitHub Activity ================= -->
+  <section class="github" id="github">
+    <div class="container">
+      <div class="section-label">GitHub 活跃度</div>
+      <h2 class="section-title">代码贡献</h2>
+      <div class="heatmap-wrap">
+        <svg width="904" height="130" viewBox="0 0 904 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="44" font-family="Inter, sans-serif" font-size="9" fill="#9A9588">周一</text>
+          <text x="0" y="76" font-family="Inter, sans-serif" font-size="9" fill="#9A9588">周三</text>
+          <text x="0" y="108" font-family="Inter, sans-serif" font-size="9" fill="#9A9588">周五</text>
+          <text x="30" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">8月</text>
+          <text x="110" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">9月</text>
+          <text x="174" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">10月</text>
+          <text x="238" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">11月</text>
+          <text x="318" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">12月</text>
+          <text x="382" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">1月</text>
+          <text x="446" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">2月</text>
+          <text x="510" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">3月</text>
+          <text x="590" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">4月</text>
+          <text x="654" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">5月</text>
+          <text x="734" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">6月</text>
+          <text x="798" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">7月</text>
+          <text x="862" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">8月</text>
+          <rect x="30" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="30" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="30" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="30" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="30" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="30" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="30" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="46" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="46" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="46" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="46" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="46" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="46" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="46" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="62" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="62" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="62" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="62" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="62" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="62" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="62" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="78" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="78" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="78" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="78" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="78" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="78" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="78" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="94" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="94" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="94" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="94" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="94" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="94" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="94" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="110" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="110" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="110" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="110" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="110" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="110" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="110" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="126" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="126" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="126" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="126" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
+          <rect x="126" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="126" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="126" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="142" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="142" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="142" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="142" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="142" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="142" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="142" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="158" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="158" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="158" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="158" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="158" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="158" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="158" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="174" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="174" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="174" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="174" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="174" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="174" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="174" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="190" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="190" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="190" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="190" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="190" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="190" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="190" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="206" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="206" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="206" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="206" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="206" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="206" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="206" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="222" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="222" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="222" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="222" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="222" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="222" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="222" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="238" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="238" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="238" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="238" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="238" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="238" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="238" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="254" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="254" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="254" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="254" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="254" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="254" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="254" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="270" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="270" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="270" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="270" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="270" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="270" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="270" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="286" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="286" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="286" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="286" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="286" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="286" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="286" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="302" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="302" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="302" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="302" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
+          <rect x="302" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="302" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="302" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="318" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="318" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="318" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="318" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="318" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="318" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="318" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="334" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="334" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="334" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="334" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="334" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="334" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="334" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="350" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="350" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="350" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="350" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="350" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="350" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="350" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="366" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="366" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="366" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="366" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="366" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="366" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="366" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="382" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="382" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="382" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="382" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="382" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="382" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="382" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="398" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="398" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="398" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="398" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="398" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="398" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="398" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="414" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="414" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="414" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="414" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="414" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="414" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="414" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="430" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="430" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="430" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="430" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="430" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="430" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="430" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="446" y="114" width="13" height="13" rx="2" fill="#F4D76B" />
+          <rect x="446" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="446" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="446" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="446" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="446" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="446" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="462" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="462" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="462" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="462" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="462" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="462" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="462" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="478" y="114" width="13" height="13" rx="2" fill="#E8C030" />
+          <rect x="478" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="478" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="478" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="478" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="478" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="478" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="494" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="494" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="494" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="494" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="494" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="494" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="494" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="510" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="510" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="510" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="510" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="510" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="510" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="510" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="526" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="526" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="526" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="526" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="526" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="526" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="526" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="542" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="542" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="542" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="542" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="542" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="542" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="542" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="558" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="558" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="558" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="558" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="558" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="558" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="558" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="574" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="574" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="574" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="574" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="574" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="574" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="574" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="590" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="590" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="590" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="590" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="590" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="590" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="590" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="606" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="606" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="606" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="606" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="606" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="606" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="606" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="622" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="622" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="622" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="622" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="622" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="622" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="622" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="638" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="638" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="638" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="638" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="638" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="638" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="638" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="654" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="654" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="654" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="654" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="654" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="654" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="654" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="670" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="670" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="670" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="670" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="670" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="670" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="670" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="686" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="686" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="686" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="686" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="686" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="686" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="686" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="702" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="702" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="702" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="702" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="702" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="702" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="702" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="718" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="718" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="718" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="718" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="718" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="718" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="718" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="734" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="734" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="734" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="734" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="734" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="734" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="734" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="750" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="750" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="750" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="750" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="750" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="750" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="750" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="766" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="766" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="766" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="766" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="766" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="766" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="766" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="782" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="782" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="782" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="782" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="782" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="782" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="782" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="798" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="798" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="798" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="798" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="798" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="798" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="798" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="814" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="814" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="814" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="814" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="814" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="814" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="814" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="830" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="830" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="830" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="830" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="830" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="830" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="830" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="846" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="846" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="846" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="846" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="846" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="846" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="846" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="862" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="862" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="862" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="862" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="862" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="862" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="862" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="878" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="878" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="878" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="878" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="878" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
+          <rect x="878" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
+        </svg>
+      </div>
+      <div class="legend">
+        少
+        <i style="background:#EBE6DC"></i><i style="background:#FCEFB4"></i><i style="background:#F4D76B"></i><i
+          style="background:#E8C030"></i><i style="background:#C4930D"></i>
+        多
       </div>
     </div>
-    <div class="footer-divider"></div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Fanda Zeng. All rights reserved.</span>
-      <span>Jinan, China</span>
-    </div>
-  </div>
-</footer>
+  </section>
 
-<script>
-  // 导航高亮：滚动时自动点亮当前区块对应的标签
-  const links = document.querySelectorAll('#mainNav a');
-  const map = {home:'home',about:'about',services:'services',works:'works',contact:'contact'};
-  const sections = ['home','about','services','works','contact'].map(id=>document.getElementById(id));
-  function updateActive(){
-    let current = 'home';
-    const pos = window.scrollY + 140;
-    sections.forEach(s=>{ if(s && s.offsetTop <= pos) current = s.id; });
-    links.forEach(l=>l.classList.toggle('active', l.getAttribute('href') === '#'+current));
-  }
-  window.addEventListener('scroll', updateActive, {passive:true});
-  updateActive();
-</script>
+  <!-- ================= Skills ================= -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-label">专业技能</div>
+      <h2 class="section-title">技能与工具</h2>
+      <div class="skills-grid" style="margin-top:48px;">
+        <div class="skills-photo">
+          <!-- [可替换图片] Skills 区域配图，建议尺寸 600×600px，正方形 -->
+          <div class="photo"><img src="assets/skills-photo.png" alt="Coding & Development"></div>
+          <div class="deco"></div>
+        </div>
+        <div class="skills-list">
+          <div class="skill">
+            <div class="skill-head"><span class="name">Python / R / SQL</span><span class="pct">90%</span></div>
+            <div class="track">
+              <div class="fill" style="width:90%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-head"><span class="name">Tableau &amp; Excel 可视化</span><span class="pct">92%</span></div>
+            <div class="track">
+              <div class="fill" style="width:92%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-head"><span class="name">统计建模与回归分析</span><span class="pct">85%</span></div>
+            <div class="track">
+              <div class="fill" style="width:85%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head center">
+        <div class="section-label">常见问题</div>
+        <h2 class="section-title">有什么想问的？</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>你的教育背景是什么？</h3>
+          <p>悉尼大学（2024 QS 世界 #20）经济学学士，经济与统计双专业，2023 年 12 月毕业。</p>
+        </div>
+        <div class="faq-item">
+          <h3>你日常使用哪些数据分析工具？</h3>
+          <p>Python 与 R 做统计建模，SQL 做数据查询，Tableau 与 Excel 做可视化与仪表板。同时具备基础的 Java 编程能力。</p>
+        </div>
+        <div class="faq-item">
+          <h3>你会哪些语言？</h3>
+          <p>母语中文，英文专业级，西班牙语日常会话水平。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Awards & Blog ================= -->
+  <!-- ================= Contact ================= -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-label">联系</div>
+      <h2 class="section-title">有项目想聊？</h2>
+      <p class="desc">欢迎随时交流 AI 产品、数据分析相关话题与新机会。让我们连接起来！</p>
+      <a href="mailto:fandazeng99@gmail.com" class="btn-pill contact-email">fandazeng99@gmail.com</a>
+      <div class="socials">
+        <a href="https://github.com/Fanda-81" class="social" title="GitHub">GH</a>
+        <a href="mailto:zengfanda8147@163.com" class="social" title="邮箱">Mail</a>
+        <a href="tel:15564163107" class="social" title="电话">Tel
+        </a>
+        <a href="#" class="social" title="LinkedIn">In</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Footer ================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand"><span class="dot"></span>Fanda Zeng</div>
+        <div class="footer-nav">
+          <a href="#home">首页</a><a href="#about">关于</a><a href="#services">能力</a><a href="#works">作品</a><a
+            href="#contact">联系</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Fanda Zeng. 保留所有权利。</span>
+        <span>中国济南</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 导航高亮：滚动时自动点亮当前区块对应的标签
+    const links = document.querySelectorAll('#mainNav a');
+    const map = { home: 'home', about: 'about', services: 'services', works: 'works', contact: 'contact' };
+    const sections = ['home', 'about', 'services', 'works', 'contact'].map(id => document.getElementById(id));
+    function updateActive() {
+      let current = 'home';
+      const pos = window.scrollY + 140;
+      sections.forEach(s => { if (s && s.offsetTop <= pos) current = s.id; });
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+  </script>
 </body>
+
 </html>
