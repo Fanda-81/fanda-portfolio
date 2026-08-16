@@ -8,7 +8,7 @@ fanda-portfolio/
 ├── Fanda-Zeng-CV.docx     # 简历文件（Download CV 按钮指向此文件）
 ├── README.md               # 本说明文件
 └── assets/                 # 图片资源目录
-    ├── hero-portrait.png       # [可替换] Hero 区域个人头像
+    ├── fanda.png       # [可替换] Hero 区域个人头像
     ├── about-photo.png         # [可替换] About 区域个人照片
     ├── work-1-ecommerce.png    # [可替换] 作品1封面图
     ├── work-2-research.png     # [可替换] 作品2封面图
