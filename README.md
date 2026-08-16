@@ -172,10 +172,9 @@ fanda-portfolio/
 
 ## 📬 联系方式
 
-- 📧 Email: zengfanda8147@163.com
+- 📧 Email: fandazeng99@gmail.com
 - 💻 GitHub: @Fanda-81
-- 📱 Phone: 15564163107
 
 ---
 
-Made with ❤️ by Fanda Zeng · 从零开始学前端
+Made with ❤️ by Fanda Zeng
