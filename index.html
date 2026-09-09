@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
@@ -19,21 +19,37 @@
       --accent-yellow-soft: #FCEFB4;
       --divider: #E6E1D6;
       --dark-section: #211F1C;
+      --header-bg: rgba(250, 247, 242, .92);
+      --track-bg: #EBE6DC;
+      --brand-text: #B8B2A4;
+      --footer-text: #C9C4BA;
+      --footer-dim: #8A8578;
+      --shadow-card: 0 4px 24px rgba(26, 26, 26, .05);
+      --shadow-lg: -12px 0 40px rgba(26, 26, 26, .16);
       --serif: 'Playfair Display', Georgia, serif;
       --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html[data-theme="dark"] {
+      --bg-primary: #171410;
+      --bg-card: #221E18;
+      --text-primary: #F2EDE4;
+      --text-secondary: #B7B0A3;
+      --accent-yellow: #F0C33C;
+      --accent-yellow-soft: rgba(244, 196, 48, .16);
+      --divider: #3B362C;
+      --dark-section: #0F0D0A;
+      --header-bg: rgba(23, 20, 16, .92);
+      --track-bg: #38322A;
+      --brand-text: #6F6A5E;
+      --footer-text: #C9C4BA;
+      --footer-dim: #7E796C;
+      --shadow-card: 0 4px 24px rgba(0, 0, 0, .35);
+      --shadow-lg: -12px 0 40px rgba(0, 0, 0, .5);
     }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 88px;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
     body {
       background: var(--bg-primary);
       color: var(--text-primary);
@@ -41,818 +57,269 @@
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      transition: background .3s ease, color .3s ease;
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .container {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
     /* ===== Header ===== */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 88px;
-      background: rgba(250, 247, 242, .92);
-      backdrop-filter: blur(10px);
-      z-index: 100;
-      border-bottom: 1px solid rgba(230, 225, 214, .6);
+      position: fixed; top: 0; left: 0; right: 0; height: 88px;
+      background: var(--header-bg); backdrop-filter: blur(10px);
+      z-index: 100; border-bottom: 1px solid rgba(230, 225, 214, .6);
+      transition: background .3s ease;
     }
-
     .header-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 88px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1240px; margin: 0 auto; padding: 0 24px; height: 88px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
-
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: 20px;
+      display: flex; align-items: center; gap: 12px;
+      font-family: var(--serif); font-weight: 600; font-size: 20px; white-space: nowrap;
     }
-
-    .logo-dot {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--accent-yellow);
+    .logo-dot { width: 34px; height: 34px; border-radius: 50%; background: var(--accent-yellow); flex: none; }
+    nav { display: flex; gap: 36px; margin-left: auto; }
+    nav a { font-size: 15px; color: var(--text-secondary); transition: color .2s; }
+    nav a:hover, nav a.active { color: var(--text-primary); font-weight: 500; }
+    .header-actions { display: flex; align-items: center; gap: 10px; margin-left: 28px; }
+    .icon-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1.5px solid var(--divider); background: transparent;
+      color: var(--text-primary); font-size: 15px; font-weight: 700;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .15s; font-family: var(--sans);
     }
-
-    nav {
-      display: flex;
-      gap: 36px;
-    }
-
-    nav a {
-      font-size: 15px;
-      color: var(--text-secondary);
-      transition: color .2s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-
+    .icon-btn:hover { border-color: var(--accent-yellow); background: var(--accent-yellow-soft); }
     .btn-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent-yellow);
-      color: var(--text-primary);
-      border-radius: 24px;
-      font-weight: 600;
-      transition: transform .15s, box-shadow .2s;
-      cursor: pointer;
-      border: none;
-      font-family: var(--sans);
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--accent-yellow); color: var(--text-primary);
+      border-radius: 24px; font-weight: 600; transition: transform .15s, box-shadow .2s;
+      cursor: pointer; border: none; font-family: var(--sans);
     }
-
-    .btn-pill:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(244, 196, 48, .45);
-    }
-
-    .header-cta {
-      width: 122px;
-      height: 44px;
-      font-size: 15px;
-    }
-
+    .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(244, 196, 48, .45); }
+    .header-cta { width: 122px; height: 44px; font-size: 15px; }
     .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
-      color: var(--text-primary);
-      border: 2px solid var(--text-primary);
-      border-radius: 24px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all .15s;
-      font-family: var(--sans);
+      display: inline-flex; align-items: center; justify-content: center;
+      background: transparent; color: var(--text-primary);
+      border: 2px solid var(--text-primary); border-radius: 24px;
+      font-weight: 600; cursor: pointer; transition: all .15s; font-family: var(--sans);
     }
+    .btn-outline:hover { background: var(--text-primary); color: var(--bg-primary); }
 
-    .btn-outline:hover {
-      background: var(--text-primary);
-      color: #fff;
+    /* 移动端汉堡菜单 */
+    .menu-toggle {
+      display: none; width: 40px; height: 40px; border-radius: 50%;
+      border: 1.5px solid var(--divider); background: transparent;
+      color: var(--text-primary); font-size: 17px; cursor: pointer;
+      align-items: center; justify-content: center; font-family: var(--sans);
     }
+    .mobile-menu {
+      display: none; position: fixed; top: 88px; left: 0; right: 0;
+      background: var(--bg-primary); border-bottom: 1px solid var(--divider);
+      padding: 10px 24px 18px; flex-direction: column; gap: 4px;
+      z-index: 99; box-shadow: 0 14px 30px rgba(26, 26, 26, .08);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 16px; padding: 12px 4px; color: var(--text-secondary);
+      border-bottom: 1px solid var(--divider);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a.active { color: var(--accent-yellow); font-weight: 600; }
 
     /* ===== Hero ===== */
-    .hero {
-      padding: 176px 0 96px;
-    }
-
-    .hero-grid {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 60px;
-    }
-
-    .hero-copy {
-      max-width: 640px;
-    }
-
+    .hero { padding: 176px 0 96px; }
+    .hero-grid { display: flex; align-items: center; justify-content: space-between; gap: 60px; }
+    .hero-copy { max-width: 640px; }
     .badge {
-      display: inline-block;
-      background: var(--accent-yellow-soft);
-      border-radius: 16px;
-      padding: 8px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 34px;
+      display: inline-block; background: var(--accent-yellow-soft); border-radius: 16px;
+      padding: 8px 18px; font-size: 13px; font-weight: 600; margin-bottom: 34px; color: var(--text-primary);
     }
-
-    .hero h1 {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(48px, 6vw, 78px);
-      line-height: 1.1;
-      margin-bottom: 18px;
-    }
-
-    .hero .role {
-      font-size: 26px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-    }
-
-    .hero .desc {
-      font-size: 17px;
-      color: var(--text-secondary);
-      max-width: 540px;
-      margin-bottom: 40px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-    }
-
-    .hero-actions .btn-pill {
-      width: 159px;
-      height: 48px;
-      font-size: 15px;
-    }
-
-    .hero-actions .btn-outline {
-      width: 147px;
-      height: 48px;
-      font-size: 15px;
-    }
-
-    .hero-avatar {
-      position: relative;
-      width: 420px;
-      height: 420px;
-      flex-shrink: 0;
-    }
-
+    .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(48px, 6vw, 78px); line-height: 1.1; margin-bottom: 18px; }
+    .hero .role { font-size: 26px; font-weight: 500; color: var(--text-secondary); margin-bottom: 24px; }
+    .hero .desc { font-size: 17px; color: var(--text-secondary); max-width: 540px; margin-bottom: 40px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-actions .btn-pill { width: 159px; height: 48px; font-size: 15px; }
+    .hero-actions .btn-outline { width: 147px; height: 48px; font-size: 15px; }
+    .hero-avatar { position: relative; width: 420px; height: 420px; flex-shrink: 0; }
     .hero-avatar .ring {
-      position: absolute;
-      inset: 0;
-      border: 1.5px solid var(--accent-yellow);
-      border-radius: 50%;
-      opacity: .55;
-      transform: translate(10px, 10px);
-      width: 390px;
-      height: 400px;
+      position: absolute; inset: 0; border: 1.5px solid var(--accent-yellow);
+      border-radius: 50%; opacity: .55; transform: translate(10px, 10px); width: 390px; height: 400px;
     }
-
     .hero-avatar .photo {
-      position: absolute;
-      width: 370px;
-      height: 380px;
-      border-radius: 50%;
-      overflow: hidden;
-      top: 20px;
-      left: 20px;
+      position: absolute; width: 370px; height: 380px; border-radius: 50%;
+      overflow: hidden; top: 20px; left: 20px;
     }
-
-    .hero-avatar .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .hero-avatar .photo img { width: 100%; height: 100%; object-fit: cover; }
 
     /* ===== Section common ===== */
-    section {
-      padding: 96px 0;
-    }
+    section { padding: 96px 0; }
+    .section-label { font-size: 14px; font-weight: 700; color: var(--accent-yellow); letter-spacing: .08em; text-transform: uppercase; }
+    .section-title { font-family: var(--serif); font-weight: 600; font-size: clamp(32px, 4vw, 44px); line-height: 1.25; margin: 12px 0 0; }
+    .section-head.center { text-align: center; margin-bottom: 56px; }
+    .section-head.center .section-desc { max-width: 520px; margin: 22px auto 0; color: var(--text-secondary); font-size: 16px; }
 
-    .section-label {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--accent-yellow);
-      letter-spacing: .08em;
-      text-transform: uppercase;
+    /* ===== Ability board（能力看板） ===== */
+    .radar-card {
+      background: var(--bg-card); border-radius: 18px; padding: 28px 26px 20px;
+      box-shadow: var(--shadow-card); transition: background .3s ease;
     }
-
-    .section-title {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(32px, 4vw, 44px);
-      line-height: 1.25;
-      margin: 12px 0 0;
+    .radar-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+    .radar-head h3 { font-family: var(--serif); font-size: 22px; font-weight: 600; }
+    .radar-head .note { font-size: 13px; color: var(--text-secondary); flex: 1; min-width: 180px; }
+    .radar-legend { font-size: 12.5px; color: var(--text-secondary); white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+    .radar-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--accent-yellow); margin-left: 4px; }
+    .radar-box { position: relative; width: 100%; height: 360px; margin-top: 8px; }
+    #radarCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    #radarTip {
+      position: absolute; pointer-events: none; z-index: 30;
+      background: var(--bg-card); border: 1px solid var(--divider); border-radius: 10px;
+      padding: 7px 12px; font-size: 13px; box-shadow: var(--shadow-card);
+      display: none; white-space: nowrap;
     }
-
-    .section-head.center {
-      text-align: center;
-      margin-bottom: 56px;
+    #radarTip b { color: var(--accent-yellow); }
+    .matrix-hint { text-align: center; font-size: 13.5px; color: var(--text-secondary); margin: 34px 0 22px; }
+    .ability-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .ab-card {
+      background: var(--bg-card); border-radius: 18px; padding: 28px 24px 22px;
+      box-shadow: var(--shadow-card); transition: background .3s ease; min-width: 0;
     }
-
-    .section-head.center .section-desc {
-      max-width: 520px;
-      margin: 22px auto 0;
-      color: var(--text-secondary);
-      font-size: 16px;
+    .ab-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .ab-ico { width: 52px; height: 52px; border-radius: 50%; background: var(--accent-yellow); display: flex; align-items: center; justify-content: center; font-size: 22px; flex: none; }
+    .ab-title { font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.2; }
+    .ab-sub { font-size: 12.5px; color: var(--text-secondary); margin-top: 2px; }
+    .ab-item {
+      display: flex; align-items: center; gap: 10px; padding: 9px 8px; border-radius: 10px;
+      cursor: pointer; min-height: 44px; transition: background .15s;
     }
-
-    /* ===== Services ===== */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border-radius: 18px;
-      padding: 36px 32px;
-      box-shadow: 0 4px 24px rgba(26, 26, 26, .05);
-    }
-
-    .icon-circle {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--accent-yellow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 26px;
-    }
-
-    .icon-circle svg {
-      width: 28px;
-      height: 28px;
-      stroke: #1A1A1A;
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .card h3 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
-    .card p {
-      font-size: 15px;
-      color: var(--text-secondary);
-    }
+    .ab-item:hover { background: var(--accent-yellow-soft); }
+    .ab-item .sname { flex: 1 1 auto; min-width: 0; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .blocks { display: flex; gap: 3px; flex: none; }
+    .blk { width: 10px; height: 10px; border-radius: 2.5px; background: var(--track-bg); transition: background .3s ease; }
+    .blk.on { background: linear-gradient(180deg, #F7D15C, #E8B62A); }
+    .blk.on.low { background: linear-gradient(180deg, #E8C030, #C4930D); }
+    .ab-score { flex: none; width: 22px; text-align: right; font-weight: 700; font-size: 14px; }
 
     /* ===== Brands ===== */
-    .brands {
-      padding: 40px 0 72px;
-    }
-
-    .brands-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .brands-row span {
-      font-size: 22px;
-      font-weight: 600;
-      color: #B8B2A4;
-      letter-spacing: .04em;
-    }
+    .brands { padding: 40px 0 72px; }
+    .brands-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .brands-row span { font-size: 22px; font-weight: 600; color: var(--brand-text); letter-spacing: .04em; }
 
     /* ===== About ===== */
-    .about-grid {
-      display: flex;
-      align-items: center;
-      gap: 100px;
-    }
-
-    .about-photo {
-      position: relative;
-      width: 460px;
-      height: 460px;
-      flex-shrink: 0;
-    }
-
-    .about-photo .photo {
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      overflow: hidden;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-    }
-
-    .about-photo .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .about-photo .ring {
-      position: absolute;
-      inset: 0;
-      border: 1.5px solid var(--accent-yellow);
-      border-radius: 50%;
-      opacity: .55;
-    }
-
-    .about-copy p {
-      color: var(--text-secondary);
-      font-size: 16px;
-      margin: 26px 0 34px;
-      max-width: 640px;
-    }
-
-    .about-copy .btn-pill {
-      width: 168px;
-      height: 46px;
-      font-size: 15px;
-    }
+    .about-grid { display: flex; align-items: center; gap: 100px; }
+    .about-photo { position: relative; width: 460px; height: 460px; flex-shrink: 0; }
+    .about-photo .photo { width: 420px; height: 420px; border-radius: 50%; overflow: hidden; position: absolute; top: 20px; left: 20px; }
+    .about-photo .photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo .ring { position: absolute; inset: 0; border: 1.5px solid var(--accent-yellow); border-radius: 50%; opacity: .55; }
+    .about-copy p { color: var(--text-secondary); font-size: 16px; margin: 26px 0 34px; max-width: 640px; }
+    .about-copy .btn-pill { width: 168px; height: 46px; font-size: 15px; }
 
     /* ===== Works ===== */
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .work-card .cover {
-      height: 320px;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 18px;
-    }
-
-    .work-card .cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .35s;
-    }
-
-    .work-card:hover .cover img {
-      transform: scale(1.04);
-    }
-
-    .work-tag {
-      display: inline-block;
-      background: var(--accent-yellow-soft);
-      border-radius: 14px;
-      padding: 6px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .work-card h3 {
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    /* ===== Testimonial ===== */
-    .testimonial {
-      text-align: center;
-    }
-
-    .testimonial blockquote {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(22px, 2.6vw, 30px);
-      line-height: 1.5;
-      max-width: 880px;
-      margin: 0 auto 36px;
-    }
-
-    .testimonial-author {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .testimonial-author img {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .testimonial-author .name {
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .testimonial-author .role {
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
+    .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .work-card .cover { height: 320px; border-radius: 16px; overflow: hidden; margin-bottom: 18px; }
+    .work-card .cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+    .work-card:hover .cover img { transform: scale(1.04); }
+    .work-tag { display: inline-block; background: var(--accent-yellow-soft); border-radius: 14px; padding: 6px 14px; font-size: 12px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary); }
+    .work-card h3 { font-size: 20px; font-weight: 700; }
 
     /* ===== GitHub ===== */
-    .github {
-      text-align: center;
-    }
-
-    .github .section-title {
-      font-size: clamp(28px, 3.4vw, 40px);
-    }
-
-    .heatmap-wrap {
-      margin: 40px auto 24px;
-      max-width: 904px;
-      overflow-x: auto;
-    }
-
-    .heatmap-wrap svg {
-      width: 100%;
-      height: auto;
-    }
-
-    .legend {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--text-secondary);
-    }
-
-    .legend i {
-      width: 12px;
-      height: 12px;
-      border-radius: 3px;
-      display: inline-block;
-    }
-
-    /* ===== Skills ===== */
-    .skills-grid {
-      display: flex;
-      gap: 80px;
-      align-items: flex-start;
-    }
-
-    .skills-photo {
-      position: relative;
-      width: 400px;
-      height: 400px;
-      flex-shrink: 0;
-    }
-
-    .skills-photo .photo {
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      overflow: hidden;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-    }
-
-    .skills-photo .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .skills-photo .deco {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: var(--accent-yellow-soft);
-    }
-
-    .skills-list {
-      flex: 1;
-      padding-top: 30px;
-    }
-
-    .skill {
-      margin-bottom: 40px;
-    }
-
-    .skill-head {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .skill-head .name {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .skill-head .pct {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .track {
-      height: 8px;
-      border-radius: 4px;
-      background: #EBE6DC;
-      overflow: hidden;
-    }
-
-    .fill {
-      height: 100%;
-      border-radius: 4px;
-      background: var(--accent-yellow);
-    }
+    .github { text-align: center; }
+    .github .section-title { font-size: clamp(28px, 3.4vw, 40px); }
+    .heatmap-wrap { margin: 40px auto 24px; max-width: 904px; overflow-x: auto; }
+    .heatmap-wrap svg { width: 100%; height: auto; min-width: 600px; }
+    .legend { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+    .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
 
     /* ===== FAQ ===== */
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .faq-item {
-      background: var(--bg-card);
-      border-radius: 16px;
-      padding: 24px 26px;
-      box-shadow: 0 4px 20px rgba(26, 26, 26, .04);
-    }
-
-    .faq-item h3 {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .faq-item p {
-      font-size: 15px;
-      color: var(--text-secondary);
-    }
-
-    /* ===== Awards & Blog ===== */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-    }
-
-    .col-title {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: 40px;
-      margin: 10px 0 34px;
-    }
-
-    .award-item {
-      display: flex;
-      gap: 20px;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--divider);
-    }
-
-    .award-item:last-child {
-      border-bottom: none;
-    }
-
-    .award-year {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--accent-yellow);
-      min-width: 45px;
-    }
-
-    .award-name {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .award-sub {
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
-
-    .blog-card {
-      display: flex;
-      gap: 22px;
-      align-items: flex-start;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--divider);
-    }
-
-    .blog-card:last-child {
-      border-bottom: none;
-    }
-
-    .blog-thumb {
-      width: 84px;
-      height: 84px;
-      border-radius: 14px;
-      background: var(--accent-yellow-soft);
-      flex-shrink: 0;
-    }
-
-    .blog-date {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      margin-bottom: 8px;
-    }
-
-    .blog-title {
-      font-size: 17px;
-      font-weight: 600;
-    }
+    .faq-list { display: flex; flex-direction: column; gap: 20px; }
+    .faq-item { background: var(--bg-card); border-radius: 16px; padding: 24px 26px; box-shadow: var(--shadow-card); transition: background .3s ease; }
+    .faq-item h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+    .faq-item p { font-size: 15px; color: var(--text-secondary); }
 
     /* ===== Contact ===== */
-    .contact {
-      text-align: center;
-    }
-
-    .contact .section-title {
-      font-size: clamp(32px, 4.2vw, 48px);
-    }
-
-    .contact .desc {
-      font-size: 17px;
-      color: var(--text-secondary);
-      margin: 24px auto 40px;
-      max-width: 560px;
-    }
-
-    .contact-email {
-      width: 258px;
-      height: 57px;
-      font-size: 17px;
-      margin: 0 auto 36px;
-    }
-
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-    }
-
+    .contact { text-align: center; }
+    .contact .section-title { font-size: clamp(32px, 4.2vw, 48px); }
+    .contact .desc { font-size: 17px; color: var(--text-secondary); margin: 24px auto 40px; max-width: 560px; }
+    .contact-email { width: 258px; height: 57px; font-size: 17px; margin: 0 auto 36px; }
+    .socials { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
     .social {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1.5px solid var(--divider);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-secondary);
-      transition: all .2s;
+      width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--divider);
+      display: flex; align-items: center; justify-content: center; font-size: 13px;
+      font-weight: 700; color: var(--text-secondary); transition: all .2s;
     }
-
-    .social:hover {
-      background: var(--accent-yellow);
-      border-color: var(--accent-yellow);
-      color: var(--text-primary);
-    }
+    .social:hover { background: var(--accent-yellow); border-color: var(--accent-yellow); color: var(--text-primary); }
 
     /* ===== Footer ===== */
-    footer {
-      background: var(--dark-section);
-      padding: 70px 0 40px;
-      color: #C9C4BA;
-    }
+    footer { background: var(--dark-section); padding: 70px 0 40px; color: var(--footer-text); transition: background .3s ease; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 44px; flex-wrap: wrap; }
+    .footer-brand { display: flex; align-items: center; gap: 12px; font-family: var(--serif); font-weight: 600; font-size: 20px; color: #fff; }
+    .footer-brand .dot { width: 30px; height: 30px; border-radius: 50%; background: var(--accent-yellow); }
+    .footer-nav { display: flex; gap: 34px; font-size: 14px; flex-wrap: wrap; }
+    .footer-nav a { color: var(--footer-text); transition: color .2s; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-divider { height: 1px; background: #3A3A38; margin-bottom: 26px; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--footer-dim); }
 
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 44px;
+    /* ===== Drawer（使用说明侧边栏） ===== */
+    .drawer {
+      position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 92vw);
+      z-index: 200; background: var(--bg-card); border-left: 1px solid var(--divider);
+      box-shadow: var(--shadow-lg); transform: translateX(105%); transition: transform .28s ease, background .3s ease;
+      display: flex; flex-direction: column;
     }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: 20px;
-      color: #fff;
+    .drawer.open { transform: translateX(0); }
+    .drawer-head { padding: 18px 20px 14px; border-bottom: 1px solid var(--divider); flex: none; display: flex; align-items: flex-start; gap: 10px; }
+    .drawer-head h2 { font-family: var(--serif); font-size: 19px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .drawer-head p { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
+    .drawer-close { background: none; border: none; color: var(--text-secondary); font-size: 20px; cursor: pointer; width: 38px; height: 38px; border-radius: 50%; line-height: 1; flex: none; font-family: var(--sans); }
+    .drawer-close:hover { background: var(--accent-yellow-soft); color: var(--accent-yellow); }
+    .drawer-body { flex: 1; overflow-y: auto; padding: 8px 16px 26px; }
+    .dg { margin-top: 14px; }
+    .dg-t { font-size: 12px; font-weight: 700; color: var(--text-secondary); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .dg-t::after { content: ""; flex: 1; height: 1px; background: var(--divider); }
+    .ditem { border: 1px solid var(--divider); border-radius: 12px; margin-bottom: 8px; overflow: hidden; background: var(--bg-primary); transition: background .3s ease; }
+    .ditem-h { display: flex; align-items: center; gap: 10px; padding: 12px 14px; cursor: pointer; min-height: 46px; }
+    .ditem-h:hover { background: var(--accent-yellow-soft); }
+    .ditem-h .n { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ditem-h .sc { font-weight: 700; font-size: 13px; color: var(--accent-yellow); }
+    .ditem-h .ar { color: var(--text-secondary); font-size: 11px; transition: transform .2s; flex: none; }
+    .ditem.open .ar { transform: rotate(90deg); }
+    .ditem-b { display: none; padding: 0 14px 14px; font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; }
+    .ditem.open .ditem-b { display: block; }
+    .ditem.active { border-color: var(--accent-yellow); background: var(--accent-yellow-soft); }
+    .ditem.active .ditem-h .n { color: var(--accent-yellow); }
+    .drawer-tab {
+      position: fixed; right: 0; top: 45%; z-index: 150; transform: translateY(-50%);
+      background: var(--accent-yellow); color: #1A1A1A; border: none;
+      border-radius: 14px 0 0 14px; min-width: 46px; min-height: 130px;
+      cursor: pointer; writing-mode: vertical-rl; font-size: 14px; font-weight: 700;
+      letter-spacing: 2px; display: flex; align-items: center; justify-content: center;
+      gap: 6px; box-shadow: 0 6px 20px rgba(244, 196, 48, .35); font-family: var(--sans);
     }
-
-    .footer-brand .dot {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--accent-yellow);
-    }
-
-    .footer-nav {
-      display: flex;
-      gap: 34px;
-      font-size: 14px;
-    }
-
-    .footer-nav a {
-      color: #C9C4BA;
-      transition: color .2s;
-    }
-
-    .footer-nav a:hover {
-      color: #fff;
-    }
-
-    .footer-divider {
-      height: 1px;
-      background: #3A3A38;
-      margin-bottom: 26px;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      color: #8A8578;
-    }
+    .drawer-tab:hover { filter: brightness(1.06); }
+    .mask { position: fixed; inset: 0; background: rgba(26, 26, 26, .4); z-index: 190; opacity: 0; pointer-events: none; transition: opacity .25s; }
+    .mask.show { opacity: 1; pointer-events: auto; }
 
     /* ===== Responsive ===== */
     @media (max-width:1080px) {
-
-      .hero-grid,
-      .about-grid,
-      .skills-grid {
-        flex-direction: column;
-        gap: 48px;
-      }
-
-      .hero-avatar {
-        order: -1;
-      }
-
-      .cards,
-      .works-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .two-col {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
+      .hero-grid, .about-grid { flex-direction: column; gap: 48px; }
+      .hero-avatar { order: -1; }
+      .works-grid, .ability-cards { grid-template-columns: 1fr 1fr; }
     }
-
     @media (max-width:680px) {
-
-      .cards,
-      .works-grid {
-        grid-template-columns: 1fr;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 130px;
-      }
-
-      .about-photo,
-      .skills-photo,
-      .hero-avatar {
-        width: 100%;
-        max-width: 420px;
-        height: auto;
-        aspect-ratio: 1;
-      }
+      .works-grid, .ability-cards { grid-template-columns: 1fr; }
+      nav { display: none; }
+      .menu-toggle { display: flex; }
+      .header-cta { display: none; }
+      .header-actions { margin-left: auto; gap: 8px; }
+      .icon-btn { width: 38px; height: 38px; }
+      .hero { padding-top: 130px; }
+      .about-photo, .hero-avatar { width: 100%; max-width: 420px; height: auto; aspect-ratio: 1; }
+      .radar-box { height: 310px; }
+      .radar-card { padding: 22px 16px 14px; }
+      .ab-card { padding: 24px 18px 18px; }
     }
   </style>
 </head>
@@ -864,96 +331,88 @@
     <div class="header-inner">
       <a href="#home" class="logo"><span class="logo-dot"></span>Fanda Zeng</a>
       <nav id="mainNav">
-        <a href="#home" class="active">首页</a>
-        <a href="#about">关于</a>
-        <a href="#services">能力</a>
-        <a href="#works">作品</a>
-        <a href="#contact">联系</a>
+        <a href="#home" class="active" data-i18n="nav_home">首页</a>
+        <a href="#about" data-i18n="nav_about">关于</a>
+        <a href="#services" data-i18n="nav_services">能力</a>
+        <a href="#works" data-i18n="nav_works">作品</a>
+        <a href="#contact" data-i18n="nav_contact">联系</a>
       </nav>
-      <a href="#contact" class="btn-pill header-cta">聊聊</a>
+      <div class="header-actions">
+        <button class="icon-btn" id="langBtn" title="EN / 中文">EN</button>
+        <button class="icon-btn" id="themeBtn" title="Toggle theme">🌙</button>
+        <a href="#contact" class="btn-pill header-cta" data-i18n="cta">聊聊</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+      </div>
     </div>
   </header>
+
+  <!-- 移动端菜单面板 -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" data-i18n="nav_home">首页</a>
+    <a href="#about" data-i18n="nav_about">关于</a>
+    <a href="#services" data-i18n="nav_services">能力</a>
+    <a href="#works" data-i18n="nav_works">作品</a>
+    <a href="#contact" data-i18n="nav_contact">联系</a>
+  </div>
 
   <!-- ================= Hero ================= -->
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="badge">开放机会中</span>
+        <span class="badge" data-i18n="hero_badge">开放机会中</span>
         <h1>Fanda Zeng</h1>
-        <div class="role">AI 产品经理 / 数据产品经理</div>
-        <p class="desc">悉尼大学经济与统计专业毕业。具备从数据采集、建模到可视化与业务落地的端到端能力。</p>
+        <div class="role" data-i18n="hero_role">AI 产品经理 / 数据产品经理</div>
+        <p class="desc" data-i18n="hero_desc">悉尼大学经济与统计专业毕业。具备从数据采集、建模到可视化与业务落地的端到端能力。</p>
         <div class="hero-actions">
-          <a href="Fanda-Zeng-CV.docx" class="btn-pill" download>下载简历</a>
-          <a href="#works" class="btn-outline">查看作品</a>
+          <a href="Fanda-Zeng-CV.docx" class="btn-pill" download data-i18n="hero_cv">下载简历</a>
+          <a href="#works" class="btn-outline" data-i18n="hero_works">查看作品</a>
         </div>
       </div>
       <div class="hero-avatar">
         <div class="ring"></div>
-        <!-- [可替换图片] Hero 区域个人头像，建议尺寸 600×600px，正方形 -->
         <div class="photo"><img src="assets/fanda.png" alt="Portrait of Fanda Zeng"></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= Services ================= -->
+  <!-- ================= Services / 能力看板 ================= -->
   <section id="services">
     <div class="container">
       <div class="section-head center">
-        <div class="section-label">服务</div>
-        <h2 class="section-title">能力</h2>
-        <p class="section-desc">让数据与产品对话 —— 把原始数字变成推动业务的关键决策。</p>
+        <div class="section-label" data-i18n="services_label">服务</div>
+        <h2 class="section-title" data-i18n="services_title">能力</h2>
+        <p class="section-desc" data-i18n="services_desc">让数据与产品对话 —— 把原始数字变成推动业务的关键决策。</p>
       </div>
-      <div class="cards">
-        <div class="card">
-          <div class="icon-circle">
-            <svg viewBox="0 0 24 24">
-              <path d="M3 3v18h18M7 14l3-3 4 4 5-6" />
-              <path d="M18 8h3v3" />
-            </svg>
-          </div>
-          <h3>数据分析与建模</h3>
-          <p>使用 Python、R 和 SQL 进行数据清洗、统计建模与回归分析 —— 从原始数据集到可验证的业务洞察。</p>
+
+      <div class="radar-card">
+        <div class="radar-head">
+          <h3 data-i18n="radar_title">核心能力雷达图</h3>
+          <span class="note" data-i18n="radar_hint">悬停查看分值 · 点击维度查看说明</span>
+          <span class="radar-legend"><span data-i18n="radar_legend">自评分值 · 满分 10</span><i></i></span>
         </div>
-        <div class="card">
-          <div class="icon-circle">
-            <svg viewBox="0 0 24 24">
-              <rect x="2" y="4" width="20" height="14" rx="2" />
-              <path d="M8 21h8M12 18v3M2 9h20" />
-              <path d="M6 13h4M6 16h7" />
-            </svg>
-          </div>
-          <h3>数据可视化</h3>
-          <p>在 Tableau 与 Excel 中搭建可交互仪表板，监控 GMV、转化率与补贴占比，支持多维度下钻分析。</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 3c-3 3.5-3 14.5 0 18M3 12h18M5 6.5c4 2.5 10 2.5 14 0M5 17.5c4-2.5 10-2.5 14 0" />
-            </svg>
-          </div>
-          <h3>产品思维</h3>
-          <p>把业务需求翻译成数据驱动的产品策略 —— 从需求梳理到落地的全链路跨职能协作。</p>
+        <div class="radar-box">
+          <canvas id="radarCanvas"></canvas>
+          <div id="radarTip"></div>
         </div>
       </div>
+
+      <div class="matrix-hint" data-i18n="matrix_hint">点击任意技能查看它在岗位中的具体含义</div>
+      <div class="ability-cards" id="abilityCards"></div>
     </div>
   </section>
-
 
   <!-- ================= About ================= -->
   <section id="about">
     <div class="container about-grid">
       <div class="about-photo">
         <div class="ring"></div>
-        <!-- [可替换图片] About 区域个人照片，建议尺寸 600×600px，正方形 -->
         <div class="photo"><img src="assets/about-photo.png" alt="Fanda at work"></div>
       </div>
       <div class="about-copy">
-        <div class="section-label">关于</div>
-        <h2 class="section-title">关于我</h2>
-        <p>悉尼大学（2024 QS 世界 #20）经济与统计双背景，让我兼具分析严谨性与产品思维。我建立了端到端的能力闭环：从中原证券的销售数据监控，到从零打造 500+ 成员的悉尼 Kismet Club
-          社群，横跨数据采集、建模、可视化与业务策略。</p>
-        <a href="#contact" class="btn-pill">联系我</a>
+        <div class="section-label" data-i18n="about_label">关于</div>
+        <h2 class="section-title" data-i18n="about_title">关于我</h2>
+        <p data-i18n="about_p">悉尼大学（2024 QS 世界 #20）经济与统计双背景，让我兼具分析严谨性与产品思维。我建立了端到端的能力闭环：从中原证券的销售数据监控，到从零打造 500+ 成员的悉尼 Kismet Club 社群，横跨数据采集、建模、可视化与业务策略。</p>
+        <a href="#contact" class="btn-pill" data-i18n="about_btn">联系我</a>
       </div>
     </div>
   </section>
@@ -962,480 +421,57 @@
   <section id="works">
     <div class="container">
       <div class="section-head center">
-        <div class="section-label">作品</div>
-        <h2 class="section-title">精选项目</h2>
+        <div class="section-label" data-i18n="works_label">作品</div>
+        <h2 class="section-title" data-i18n="works_title">精选项目</h2>
       </div>
       <div class="works-grid">
         <div class="work-card">
-          <!-- [可替换图片] 作品1封面图，建议尺寸 800×500px，横向 -->
-          <div class="cover"><a href="https://fanda-81.github.io/Data_analysis_portfolio/" target="_blank"
-              rel="noopener noreferrer"><img src="assets/work-1-ecommerce.png" alt="Business Operations Dashboard"></a>
-          </div>
+          <div class="cover"><a href="https://fanda-81.github.io/Data_analysis_portfolio/" target="_blank" rel="noopener noreferrer"><img src="assets/work-1-ecommerce.png" alt="Business Operations Dashboard"></a></div>
           <span class="work-tag">Tableau &amp; Excel</span>
-          <h3><a href="https://fanda-81.github.io/Data_analysis_portfolio/" target="_blank"
-              rel="noopener noreferrer">电商数据分析与可视化</a></h3>
+          <h3><a href="https://fanda-81.github.io/Data_analysis_portfolio/" target="_blank" rel="noopener noreferrer" data-i18n="work1_title">电商数据分析与可视化</a></h3>
         </div>
         <div class="work-card">
-          <!-- [可替换图片] 作品2封面图，建议尺寸 800×500px，横向 -->
-          <div class="cover"><a href="https://fanda-81.github.io/upf-pa-obesity/" target="_blank"
-              rel="noopener noreferrer"><img src="assets/work-2-research.png" alt="Correlation Heatmap"></a></div>
-          <span class="work-tag">R &amp; 统计</span>
-          <h3><a href="https://fanda-81.github.io/upf-pa-obesity/" target="_blank"
-              rel="noopener noreferrer">跨学科健康统计研究</a></h3>
+          <div class="cover"><a href="https://fanda-81.github.io/upf-pa-obesity/" target="_blank" rel="noopener noreferrer"><img src="assets/work-2-research.png" alt="Correlation Heatmap"></a></div>
+          <span class="work-tag" data-i18n="work2_tag">R &amp; 统计</span>
+          <h3><a href="https://fanda-81.github.io/upf-pa-obesity/" target="_blank" rel="noopener noreferrer" data-i18n="work2_title">跨学科健康统计研究</a></h3>
         </div>
         <div class="work-card">
-          <!-- [可替换图片] 作品3封面图，建议尺寸 800×500px，横向 -->
-          <div class="cover"><a href="https://fanda-81.github.io/sydney-flag-football/" target="_blank"
-              rel="noopener noreferrer"><img src="assets/work-3-community.png" alt="Community Growth"></a></div>
-          <span class="work-tag">运营</span>
-          <h3><a href="https://fanda-81.github.io/sydney-flag-football/" target="_blank"
-              rel="noopener noreferrer">Sydney Kismet Club —— 从 0 到 500+ 用户</a></h3>
+          <div class="cover"><a href="https://fanda-81.github.io/sydney-flag-football/" target="_blank" rel="noopener noreferrer"><img src="assets/work-3-community.png" alt="Community Growth"></a></div>
+          <span class="work-tag" data-i18n="work3_tag">运营</span>
+          <h3><a href="https://fanda-81.github.io/sydney-flag-football/" target="_blank" rel="noopener noreferrer" data-i18n="work3_title">Sydney Kismet Club —— 从 0 到 500+ 用户</a></h3>
         </div>
       </div>
     </div>
   </section>
-
 
   <!-- ================= GitHub Activity ================= -->
   <section class="github" id="github">
     <div class="container">
-      <div class="section-label">GitHub 活跃度</div>
-      <h2 class="section-title">代码贡献</h2>
+      <div class="section-label" data-i18n="gh_label">GitHub 活跃度</div>
+      <h2 class="section-title" data-i18n="gh_title">代码贡献</h2>
       <div class="heatmap-wrap">
         <svg width="904" height="130" viewBox="0 0 904 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="44" font-family="Inter, sans-serif" font-size="9" fill="#9A9588">周一</text>
-          <text x="0" y="76" font-family="Inter, sans-serif" font-size="9" fill="#9A9588">周三</text>
-          <text x="0" y="108" font-family="Inter, sans-serif" font-size="9" fill="#9A9588">周五</text>
-          <text x="30" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">8月</text>
-          <text x="110" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">9月</text>
-          <text x="174" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">10月</text>
-          <text x="238" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">11月</text>
-          <text x="318" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">12月</text>
-          <text x="382" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">1月</text>
-          <text x="446" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">2月</text>
-          <text x="510" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">3月</text>
-          <text x="590" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">4月</text>
-          <text x="654" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">5月</text>
-          <text x="734" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">6月</text>
-          <text x="798" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">7月</text>
-          <text x="862" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588">8月</text>
-          <rect x="30" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="30" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="30" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="30" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="30" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="30" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="30" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="46" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="46" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="46" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="46" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="46" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="46" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="46" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="62" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="62" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="62" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="62" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="62" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="62" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="62" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="78" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="78" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="78" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="78" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="78" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="78" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="78" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="94" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="94" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="94" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="94" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="94" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="94" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="94" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="110" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="110" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="110" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="110" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="110" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="110" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="110" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="126" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="126" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="126" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="126" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="126" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="126" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="126" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="142" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="142" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="142" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="142" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="142" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="142" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="142" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="158" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="158" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="158" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="158" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="158" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="158" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="158" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="174" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="174" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="174" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="174" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="174" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="174" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="174" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="190" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="190" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="190" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="190" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="190" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="190" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="190" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="206" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="206" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="206" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="206" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="206" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="206" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="206" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="222" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="222" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="222" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="222" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="222" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="222" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="222" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="238" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="238" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="238" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="238" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="238" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="238" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="238" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="254" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="254" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="254" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="254" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="254" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="254" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="254" y="98" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="270" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="270" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="270" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="270" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="270" y="66" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="270" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="270" y="98" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="286" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="286" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="286" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="286" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="286" y="66" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="286" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="286" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="302" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="302" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="302" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="302" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="302" y="66" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="302" y="82" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="302" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="318" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="318" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="318" y="34" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="318" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="318" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="318" y="82" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="318" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="334" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="334" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="334" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="334" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="334" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="334" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="334" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="350" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="350" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="350" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="350" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="350" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="350" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="350" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="366" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="366" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="366" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="366" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="366" y="66" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="366" y="82" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="366" y="98" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="382" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="382" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="382" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="382" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="382" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="382" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="382" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="398" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="398" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="398" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="398" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="398" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="398" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="398" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="414" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="414" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="414" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="414" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="414" y="66" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="414" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="414" y="98" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="430" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="430" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="430" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="430" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="430" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="430" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="430" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="446" y="114" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="446" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="446" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="446" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="446" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="446" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="446" y="98" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="462" y="114" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="462" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="462" y="34" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="462" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="462" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="462" y="82" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="462" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="478" y="114" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="478" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="478" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="478" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="478" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="478" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="478" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="494" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="494" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="494" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="494" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="494" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="494" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="494" y="98" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="510" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="510" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="510" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="510" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="510" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="510" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="510" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="526" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="526" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="526" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="526" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="526" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="526" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="526" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="542" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="542" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="542" y="34" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="542" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="542" y="66" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="542" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="542" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="558" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="558" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="558" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="558" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="558" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="558" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="558" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="574" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="574" y="18" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="574" y="34" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="574" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="574" y="66" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="574" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="574" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="590" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="590" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="590" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="590" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="590" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="590" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="590" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="606" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="606" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="606" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="606" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="606" y="66" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="606" y="82" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="606" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="622" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="622" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="622" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="622" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="622" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="622" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="622" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="638" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="638" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="638" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="638" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="638" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="638" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="638" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="654" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="654" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="654" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="654" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="654" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="654" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="654" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="670" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="670" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="670" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="670" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="670" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="670" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="670" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="686" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="686" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="686" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="686" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="686" y="66" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="686" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="686" y="98" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="702" y="114" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="702" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="702" y="34" width="13" height="13" rx="2" fill="#C4930D" />
-          <rect x="702" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="702" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="702" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="702" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="718" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="718" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="718" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="718" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="718" y="66" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="718" y="82" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="718" y="98" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="734" y="114" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="734" y="18" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="734" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="734" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="734" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="734" y="82" width="13" height="13" rx="2" fill="#C4930D" />
-          <rect x="734" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="750" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="750" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="750" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="750" y="50" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="750" y="66" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="750" y="82" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="750" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="766" y="114" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="766" y="18" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="766" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="766" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="766" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="766" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="766" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="782" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="782" y="18" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="782" y="34" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="782" y="50" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="782" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="782" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="782" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="798" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="798" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="798" y="34" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="798" y="50" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="798" y="66" width="13" height="13" rx="2" fill="#C4930D" />
-          <rect x="798" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="798" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="814" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="814" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="814" y="34" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="814" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="814" y="66" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="814" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="814" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="830" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="830" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="830" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="830" y="50" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="830" y="66" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="830" y="82" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="830" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="846" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="846" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="846" y="34" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="846" y="50" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="846" y="66" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="846" y="82" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="846" y="98" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="862" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="862" y="18" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="862" y="34" width="13" height="13" rx="2" fill="#FCEFB4" />
-          <rect x="862" y="50" width="13" height="13" rx="2" fill="#F4D76B" />
-          <rect x="862" y="66" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="862" y="82" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="862" y="98" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="878" y="114" width="13" height="13" rx="2" fill="#EBE6DC" />
-          <rect x="878" y="18" width="13" height="13" rx="2" fill="#C4930D" />
-          <rect x="878" y="34" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="878" y="50" width="13" height="13" rx="2" fill="#E8C030" />
-          <rect x="878" y="66" width="13" height="13" rx="2" fill="#C4930D" />
-          <rect x="878" y="82" width="13" height="13" rx="2" fill="#E8C030" />
+          <text x="0" y="44" font-family="Inter, sans-serif" font-size="9" fill="#9A9588" data-i18n="gh_mon">周一</text>
+          <text x="0" y="76" font-family="Inter, sans-serif" font-size="9" fill="#9A9588" data-i18n="gh_wed">周三</text>
+          <text x="0" y="108" font-family="Inter, sans-serif" font-size="9" fill="#9A9588" data-i18n="gh_fri">周五</text>
+          <text x="30" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m8a">8月</text>
+          <text x="110" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m9">9月</text>
+          <text x="174" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m10">10月</text>
+          <text x="238" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m11">11月</text>
+          <text x="318" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m12">12月</text>
+          <text x="382" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m1">1月</text>
+          <text x="446" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m2">2月</text>
+          <text x="510" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m3">3月</text>
+          <text x="590" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m4">4月</text>
+          <text x="654" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m5">5月</text>
+          <text x="734" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m6">6月</text>
+          <text x="798" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m7">7月</text>
+          <text x="862" y="10" font-family="Inter, sans-serif" font-size="10" fill="#9A9588" data-i18n="gh_m8b">8月</text>
+          <g id="heatCells"></g>
         </svg>
       </div>
       <div class="legend">
-        <i style="background:#EBE6DC"></i><i style="background:#FCEFB4"></i><i style="background:#F4D76B"></i><i
-          style="background:#E8C030"></i><i style="background:#C4930D"></i>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= Skills ================= -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-label">专业技能</div>
-      <h2 class="section-title">技能与工具</h2>
-      <div class="skills-grid" style="margin-top:48px;">
-        <div class="skills-photo">
-          <!-- [可替换图片] Skills 区域配图，建议尺寸 600×600px，正方形 -->
-          <div class="photo"><img src="assets/skills-photo.png" alt="Coding & Development"></div>
-          <div class="deco"></div>
-        </div>
-        <div class="skills-list">
-          <div class="skill">
-            <div class="skill-head"><span class="name">Python / R / SQL</span><span class="pct">90%</span></div>
-            <div class="track">
-              <div class="fill" style="width:90%"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-head"><span class="name">Tableau &amp; Excel 可视化</span><span class="pct">92%</span></div>
-            <div class="track">
-              <div class="fill" style="width:92%"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-head"><span class="name">统计建模与回归分析</span><span class="pct">85%</span></div>
-            <div class="track">
-              <div class="fill" style="width:85%"></div>
-            </div>
-          </div>
-        </div>
+        <i style="background:#EBE6DC"></i><i style="background:#FCEFB4"></i><i style="background:#F4D76B"></i><i style="background:#E8C030"></i><i style="background:#C4930D"></i>
       </div>
     </div>
   </section>
@@ -1444,39 +480,37 @@
   <section id="faq">
     <div class="container">
       <div class="section-head center">
-        <div class="section-label">常见问题</div>
-        <h2 class="section-title">有什么想问的？</h2>
+        <div class="section-label" data-i18n="faq_label">常见问题</div>
+        <h2 class="section-title" data-i18n="faq_title">有什么想问的？</h2>
       </div>
       <div class="faq-list">
         <div class="faq-item">
-          <h3>你的教育背景是什么？</h3>
-          <p>悉尼大学（2024 QS 世界 #20）经济学学士，经济与统计双专业，2023 年 12 月毕业。</p>
+          <h3 data-i18n="faq1_q">你的教育背景是什么？</h3>
+          <p data-i18n="faq1_p">悉尼大学（2024 QS 世界 #20）经济学学士，经济与统计双专业，2023 年 12 月毕业。</p>
         </div>
         <div class="faq-item">
-          <h3>你日常使用哪些数据分析工具？</h3>
-          <p>Python 与 R 做统计建模，SQL 做数据查询，Tableau 与 Excel 做可视化与仪表板。同时具备基础的 Java 编程能力。</p>
+          <h3 data-i18n="faq2_q">你日常使用哪些数据分析工具？</h3>
+          <p data-i18n="faq2_p">Python 与 R 做统计建模，SQL 做数据查询，Tableau 与 Excel 做可视化与仪表板。同时具备基础的 Java 编程能力。</p>
         </div>
         <div class="faq-item">
-          <h3>你会哪些语言？</h3>
-          <p>母语中文，英文专业级，西班牙语日常会话水平。</p>
+          <h3 data-i18n="faq3_q">你会哪些语言？</h3>
+          <p data-i18n="faq3_p">母语中文，英文专业级，西班牙语日常会话水平。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= Awards & Blog ================= -->
   <!-- ================= Contact ================= -->
   <section class="contact" id="contact">
     <div class="container">
-      <div class="section-label">联系</div>
-      <h2 class="section-title">有项目想聊？</h2>
-      <p class="desc">欢迎随时交流 AI 产品、数据分析相关话题与新机会。让我们连接起来！</p>
+      <div class="section-label" data-i18n="contact_label">联系</div>
+      <h2 class="section-title" data-i18n="contact_title">有项目想聊？</h2>
+      <p class="desc" data-i18n="contact_desc">欢迎随时交流 AI 产品、数据分析相关话题与新机会。让我们连接起来！</p>
       <a href="mailto:fandazeng99@gmail.com" class="btn-pill contact-email">fandazeng99@gmail.com</a>
       <div class="socials">
         <a href="https://github.com/Fanda-81" class="social" title="GitHub">GH</a>
         <a href="mailto:zengfanda8147@163.com" class="social" title="邮箱">Mail</a>
-        <a href="tel:15564163107" class="social" title="电话">Tel
-        </a>
+        <a href="tel:15564163107" class="social" title="电话">Tel</a>
         <a href="#" class="social" title="LinkedIn">In</a>
       </div>
     </div>
@@ -1488,31 +522,588 @@
       <div class="footer-top">
         <div class="footer-brand"><span class="dot"></span>Fanda Zeng</div>
         <div class="footer-nav">
-          <a href="#home">首页</a><a href="#about">关于</a><a href="#services">能力</a><a href="#works">作品</a><a
-            href="#contact">联系</a>
+          <a href="#home" data-i18n="nav_home">首页</a><a href="#about" data-i18n="nav_about">关于</a><a href="#services" data-i18n="nav_services">能力</a><a href="#works" data-i18n="nav_works">作品</a><a href="#contact" data-i18n="nav_contact">联系</a>
         </div>
       </div>
       <div class="footer-divider"></div>
       <div class="footer-bottom">
-        <span>&copy; 2026 Fanda Zeng. 保留所有权利。</span>
-        <span>中国深圳</span>
+        <span data-i18n="copyright">© 2026 Fanda Zeng. 保留所有权利。</span>
+        <span data-i18n="city">中国深圳</span>
       </div>
     </div>
   </footer>
 
+  <!-- ================= 使用说明侧边栏（仅能力区块可见） ================= -->
+  <aside class="drawer" id="drawer">
+    <div class="drawer-head">
+      <div style="flex:1;min-width:0;">
+        <h2>📖 <span data-i18n="drawer_title">使用说明 · 技能百科</span></h2>
+        <p data-i18n="drawer_desc">点击任意技能，查看它在数据/产品岗位中的具体含义与自评等级（满分 10）。</p>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+  <div class="mask" id="mask"></div>
+  <button class="drawer-tab" id="drawerTab">📖 <span data-i18n="drawer_tab">使用说明</span></button>
+
   <script>
-    // 导航高亮：滚动时自动点亮当前区块对应的标签
-    const links = document.querySelectorAll('#mainNav a');
-    const map = { home: 'home', about: 'about', services: 'services', works: 'works', contact: 'contact' };
-    const sections = ['home', 'about', 'services', 'works', 'contact'].map(id => document.getElementById(id));
-    function updateActive() {
-      let current = 'home';
-      const pos = window.scrollY + 140;
-      sections.forEach(s => { if (s && s.offsetTop <= pos) current = s.id; });
-      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
-    }
-    window.addEventListener('scroll', updateActive, { passive: true });
-    updateActive();
+    (function () {
+      "use strict";
+      try {
+
+        /* ============ 偏好（localStorage 记忆） ============ */
+        var lang = "zh";
+        var theme = "light";
+        try { if (localStorage.getItem("fs_lang") === "en") lang = "en"; } catch (e) { }
+        try { if (localStorage.getItem("fs_theme") === "dark") theme = "dark"; } catch (e) { }
+
+        var $ = function (id) { return document.getElementById(id); };
+        var rootEl = document.documentElement;
+
+        /* ============ 全局文本词典 ============ */
+        var I18N = {
+          nav_home: { zh: "首页", en: "Home" },
+          nav_about: { zh: "关于", en: "About" },
+          nav_services: { zh: "能力", en: "Abilities" },
+          nav_works: { zh: "作品", en: "Works" },
+          nav_contact: { zh: "联系", en: "Contact" },
+          cta: { zh: "聊聊", en: "Let's Talk" },
+          hero_badge: { zh: "开放机会中", en: "Open to Opportunities" },
+          hero_role: { zh: "AI 产品经理 / 数据产品经理", en: "AI Product Manager / Data Product Manager" },
+          hero_desc: { zh: "悉尼大学经济与统计专业毕业。具备从数据采集、建模到可视化与业务落地的端到端能力。", en: "Economics & Statistics graduate from the University of Sydney, with end-to-end abilities from data collection and modeling to visualization and business impact." },
+          hero_cv: { zh: "下载简历", en: "Download CV" },
+          hero_works: { zh: "查看作品", en: "View Works" },
+          services_label: { zh: "服务", en: "Capabilities" },
+          services_title: { zh: "能力", en: "Abilities" },
+          services_desc: { zh: "让数据与产品对话 —— 把原始数字变成推动业务的关键决策。", en: "Letting data and product speak — turning raw numbers into decisions that move the business." },
+          radar_title: { zh: "核心能力雷达图", en: "Core Ability Radar" },
+          radar_hint: { zh: "悬停查看分值 · 点击维度查看说明", en: "Hover for scores · click a dimension for details" },
+          radar_legend: { zh: "自评分值 · 满分 10", en: "Self-assessed · Max 10" },
+          matrix_hint: { zh: "点击任意技能查看它在岗位中的具体含义", en: "Click any skill to see what it means in practice" },
+          about_label: { zh: "关于", en: "About" },
+          about_title: { zh: "关于我", en: "About Me" },
+          about_p: { zh: "悉尼大学（2024 QS 世界 #20）经济与统计双背景，让我兼具分析严谨性与产品思维。我建立了端到端的能力闭环：从中原证券的销售数据监控，到从零打造 500+ 成员的悉尼 Kismet Club 社群，横跨数据采集、建模、可视化与业务策略。", en: "A double background in Economics and Statistics (University of Sydney, QS #20 in 2024) gives me both analytical rigor and product thinking. I built an end-to-end loop: from sales-data monitoring at Zhongyuan Securities to building the 500+ member Sydney Kismet Club from scratch — spanning data collection, modeling, visualization and business strategy." },
+          about_btn: { zh: "联系我", en: "Contact Me" },
+          works_label: { zh: "作品", en: "Work" },
+          works_title: { zh: "精选项目", en: "Selected Projects" },
+          work2_tag: { zh: "R & 统计", en: "R & Statistics" },
+          work3_tag: { zh: "运营", en: "Operations" },
+          work1_title: { zh: "电商数据分析与可视化", en: "E-commerce Data Analytics" },
+          work2_title: { zh: "跨学科健康统计研究", en: "Cross-disciplinary Health Research" },
+          work3_title: { zh: "Sydney Kismet Club —— 从 0 到 500+ 用户", en: "Sydney Kismet Club — From 0 to 500+ Users" },
+          gh_label: { zh: "GitHub 活跃度", en: "GitHub Activity" },
+          gh_title: { zh: "代码贡献", en: "Code Contributions" },
+          gh_mon: { zh: "周一", en: "Mon" },
+          gh_wed: { zh: "周三", en: "Wed" },
+          gh_fri: { zh: "周五", en: "Fri" },
+          gh_m8a: { zh: "8月", en: "Aug" },
+          gh_m9: { zh: "9月", en: "Sep" },
+          gh_m10: { zh: "10月", en: "Oct" },
+          gh_m11: { zh: "11月", en: "Nov" },
+          gh_m12: { zh: "12月", en: "Dec" },
+          gh_m1: { zh: "1月", en: "Jan" },
+          gh_m2: { zh: "2月", en: "Feb" },
+          gh_m3: { zh: "3月", en: "Mar" },
+          gh_m4: { zh: "4月", en: "Apr" },
+          gh_m5: { zh: "5月", en: "May" },
+          gh_m6: { zh: "6月", en: "Jun" },
+          gh_m7: { zh: "7月", en: "Jul" },
+          gh_m8b: { zh: "8月", en: "Aug" },
+          faq_label: { zh: "常见问题", en: "FAQ" },
+          faq_title: { zh: "有什么想问的？", en: "Any Questions?" },
+          faq1_q: { zh: "你的教育背景是什么？", en: "What's your education background?" },
+          faq1_p: { zh: "悉尼大学（2024 QS 世界 #20）经济学学士，经济与统计双专业，2023 年 12 月毕业。", en: "Bachelor of Economics with a double major in Economics & Statistics from the University of Sydney (QS #20 in 2024), graduated December 2023." },
+          faq2_q: { zh: "你日常使用哪些数据分析工具？", en: "Which data tools do you use daily?" },
+          faq2_p: { zh: "Python 与 R 做统计建模，SQL 做数据查询，Tableau 与 Excel 做可视化与仪表板。同时具备基础的 Java 编程能力。", en: "Python & R for statistical modeling, SQL for data queries, Tableau & Excel for dashboards and visualizations, plus basic Java." },
+          faq3_q: { zh: "你会哪些语言？", en: "What languages do you speak?" },
+          faq3_p: { zh: "母语中文，英文专业级，西班牙语日常会话水平。", en: "Native Chinese, professional English, conversational Spanish." },
+          contact_label: { zh: "联系", en: "Contact" },
+          contact_title: { zh: "有项目想聊？", en: "Have a Project in Mind?" },
+          contact_desc: { zh: "欢迎随时交流 AI 产品、数据分析相关话题与新机会。让我们连接起来！", en: "Happy to talk AI products, data analytics and new opportunities. Let's connect!" },
+          copyright: { zh: "© 2026 Fanda Zeng. 保留所有权利。", en: "© 2026 Fanda Zeng. All rights reserved." },
+          city: { zh: "中国深圳", en: "Shenzhen, China" },
+          drawer_title: { zh: "使用说明 · 技能百科", en: "Guide · Skill Encyclopedia" },
+          drawer_desc: { zh: "点击任意技能，查看它在数据/产品岗位中的具体含义与自评等级（满分 10）。", en: "Click any skill to see what it means in data/product roles, with a self-assessed level (max 10)." },
+          drawer_tab: { zh: "使用说明", en: "Guide" },
+          dg_radar: { zh: "核心能力", en: "Core Abilities" },
+          dg_data: { zh: "数据技能", en: "Data Skills" },
+          dg_product: { zh: "产品技能", en: "Product Skills" },
+          dg_mindset: { zh: "综合素养", en: "Mindset & Soft Skills" }
+        };
+        function t(key) { var o = I18N[key]; return o ? o[lang] : key; }
+
+        /* ============ 能力数据 ============ */
+        var RADAR_DIMS = [
+          { key: "dataAnalysis", zh: "数据分析", en: "Data Analysis", v: 9, def_zh: "把原始数据转化为可执行业务结论的综合能力，涵盖取数口径、清洗逻辑、统计方法与结论表达，是数据岗位的核心基本功。", def_en: "Turning raw data into actionable conclusions — retrieval, cleaning, statistics and clear storytelling." },
+          { key: "product", zh: "产品思维", en: "Product Thinking", v: 8, def_zh: "从用户需求与业务目标出发设计解决方案的思维方式，覆盖需求洞察、优先级判断、功能设计与数据验证的完整闭环。", def_en: "Designing solutions from user needs and business goals — insight, prioritization and validation." },
+          { key: "tech", zh: "技术实现", en: "Technical Skills", v: 7, def_zh: "用工具和代码把想法落地：SQL、Python、R、Excel 建模与可视化工具链，能独立完成分析或产品原型。", def_en: "Hands-on delivery with SQL, Python, R, Excel and visualization toolchains." },
+          { key: "business", zh: "商业洞察", en: "Business Insight", v: 7, def_zh: "理解商业模式、成本收益与业务指标含义，能判断哪些数据重要、哪些结论能带来实际价值。", def_en: "Understanding business models and metrics — knowing which insights drive value." },
+          { key: "comm", zh: "沟通协作", en: "Communication", v: 8, def_zh: "面向业务、研发与管理层清晰传达结论、推进跨职能协作，会讲数据故事也能促成共识。", def_en: "Clear communication across business, engineering and leadership; driving alignment." },
+          { key: "resilience", zh: "抗压自驱", en: "Resilience & Drive", v: 9, def_zh: "在高压、多线并行与结果不确定的环境中保持稳定输出和主动推进，是高强度岗位的底层保障。", def_en: "Staying productive and proactive under pressure, ambiguity and parallel workloads." }
+        ];
+
+        var SKILL_GROUPS = [
+          { key: "data", ico: "📊", zh: "数据技能", en: "Data Skills", items: [
+            { key: "py", zh: "Python 数据分析", en: "Python Data Analysis", score: 8, def_zh: "使用 Pandas、NumPy 完成数据清洗、聚合与探索性分析，可编写自动化处理脚本，显著提升取数与分析效率。", def_en: "Data cleaning, aggregation and EDA with Pandas/NumPy; scripting for automation." },
+            { key: "sql", zh: "SQL 数据查询", en: "SQL Query", score: 9, def_zh: "熟练编写 JOIN、窗口函数、子查询等复杂查询，能独立完成业务取数、指标口径定义与数据质量核对。", def_en: "Complex queries (JOIN, window functions), business data retrieval and metric definitions." },
+            { key: "excel", zh: "Excel 表格建模", en: "Spreadsheet Modeling", score: 9, def_zh: "数据透视、公式建模与可视化报表，覆盖业务侧日常分析、临时取数与快速交付场景。", def_en: "Pivot tables, formula modeling and reporting for fast business analysis." },
+            { key: "r", zh: "统计建模（R）", en: "Statistical Modeling (R)", score: 8, def_zh: "回归、假设检验与实验分析等统计方法，具备悉尼大学跨学科统计项目实战经验（R 建模，HD 成绩）。", def_en: "Regression, hypothesis testing and experiments; practiced in a University of Sydney project (HD)." },
+            { key: "viz", zh: "数据可视化", en: "Data Visualization", score: 8, def_zh: "用图表讲清业务结论，覆盖 BI 报表、Tableau/ECharts 看板与汇报材料，遵循结论先行的表达。", def_en: "Storytelling with charts — BI dashboards, Tableau/ECharts and report visuals." },
+            { key: "ab", zh: "A/B 测试", en: "A/B Testing", score: 7, def_zh: "理解实验设计、显著性检验与结果解读，能评估策略改版效果并给出可信结论。", def_en: "Experiment design, significance testing and interpretation for product changes." },
+            { key: "etl", zh: "ETL 与数据清洗", en: "ETL & Data Cleaning", score: 7, def_zh: "数据抽取、清洗、标准化与质量校验，保证分析口径一致、结果可复现。", def_en: "Extraction, cleaning, standardization and validation for reproducible analysis." },
+            { key: "ml", zh: "机器学习基础", en: "ML Basics", score: 6, def_zh: "掌握常用模型原理与 sklearn 实践，能做基线建模、特征理解与效果评估。", def_en: "Common model fundamentals and sklearn practice for baseline modeling." }
+          ]},
+          { key: "product", ico: "🧭", zh: "产品技能", en: "Product Skills", items: [
+            { key: "prd", zh: "PRD 撰写", en: "PRD Writing", score: 8, def_zh: "独立输出产品需求文档，覆盖用户故事、功能逻辑、边界与验收标准，曾独立撰写足球爱好者小程序 PRD。", def_en: "Independent PRDs covering user stories, logic and acceptance criteria." },
+            { key: "req", zh: "需求分析", en: "Requirements Analysis", score: 8, def_zh: "从用户反馈、数据表现与业务目标中提炼真实需求，明确优先级与交付范围。", def_en: "Extracting real needs from feedback, data and goals; prioritizing scope." },
+            { key: "metric", zh: "指标体系建设", en: "Metrics Architecture", score: 9, def_zh: "设计北极星指标与过程指标体系，用数据衡量产品价值与迭代效果，支撑数据驱动决策。", def_en: "Building north-star and process metrics to measure product value." },
+            { key: "ur", zh: "用户研究", en: "User Research", score: 7, def_zh: "问卷、访谈与用户画像方法，把用户洞察转化为可执行的产品决策依据。", def_en: "Surveys, interviews and personas feeding product decisions." },
+            { key: "ca", zh: "竞品分析", en: "Competitive Analysis", score: 7, def_zh: "拆解竞品功能、数据表现与用户反馈，输出差异化机会与跟进清单。", def_en: "Benchmarking features and data to find differentiation opportunities." },
+            { key: "proto", zh: "原型设计", en: "Prototyping", score: 6, def_zh: "使用线框图与交互稿表达产品方案，与研发高效对齐需求细节。", def_en: "Wireframes and interaction flows to align with engineering." },
+            { key: "dd", zh: "数据驱动决策", en: "Data-driven Decisions", score: 9, def_zh: "用数据回答「做什么、怎么做、做得怎样」，贯穿产品定义、上线与复盘全生命周期。", def_en: "Answering what / how / so-what with data across the product lifecycle." },
+            { key: "strategy", zh: "产品策略", en: "Product Strategy", score: 7, def_zh: "结合商业目标、用户需求与数据洞察制定产品路线与优先级排序。", def_en: "Roadmaps and priorities balancing business, users and data." }
+          ]},
+          { key: "mindset", ico: "💎", zh: "综合素养", en: "Mindset & Soft Skills", items: [
+            { key: "resilience", zh: "抗压能力", en: "Resilience", score: 9, def_zh: "指在高强度、多线并行、结果不确定的工作压力下，仍能保持稳定输出、理性决策与积极心态的能力。紧急取数、版本上线、发布会前交付都是典型高压场景。", def_en: "Stable output, rational decisions and a positive mindset under high pressure and uncertainty." },
+            { key: "logic", zh: "逻辑思维", en: "Logical Thinking", score: 9, def_zh: "结构化拆解复杂问题，因果链条清晰，结论经得起追问与复现，是分析与产品工作的共同底座。", def_en: "Structured problem decomposition with clear, reproducible reasoning." },
+            { key: "learn", zh: "学习能力", en: "Learning Ability", score: 9, def_zh: "快速上手新工具、新领域与新方法，把学习转化为可交付成果（如自学 R 建模、金融与产品知识）。", def_en: "Rapidly picking up new tools and domains, converting learning into deliverables." },
+            { key: "comm", zh: "沟通表达", en: "Communication", score: 8, def_zh: "面向业务、研发与管理层清晰表达，讲数据故事、写文档、做汇报都能抓住重点。", def_en: "Clear expression across audiences — data stories, docs and presentations." },
+            { key: "team", zh: "团队协作", en: "Teamwork", score: 8, def_zh: "跨职能推进项目，主动补位、共享信息、推动共识，能融入高强度协作节奏。", def_en: "Cross-functional collaboration, proactive support and consensus building." },
+            { key: "init", zh: "主动自驱", en: "Initiative", score: 8, def_zh: "自发发现机会、提出问题并推动改进，不等待外部指令，持续输出增量价值。", def_en: "Spotting opportunities and driving improvement without waiting for instructions." },
+            { key: "time", zh: "时间管理", en: "Time Management", score: 7, def_zh: "多项目并行时合理排期、管理预期，保证交付质量与节奏稳定。", def_en: "Prioritizing parallel workloads to keep quality and pace stable." },
+            { key: "en", zh: "英文读写", en: "English Reading & Writing", score: 8, def_zh: "流畅阅读英文文档、文献与产品资料，可用英文写作并与跨语言团队协作。", def_en: "Reading English docs and literature fluently; writing and collaborating in English." }
+          ]}
+        ];
+
+        /* ============ GitHub 热力图数据（原站硬编码数据迁移为 JS 生成） ============ */
+        var HEAT_COLORS = ["#EBE6DC", "#FCEFB4", "#F4D76B", "#E8C030", "#C4930D"];
+        var HEAT = (function () {
+          // 13 列 × 7 行；0=空，1-4=强度
+          var rows = 7, cols = 13;
+          var data = [];
+          for (var r = 0; r < rows; r++) { data.push(new Array(cols).fill(0)); }
+          // 按原 SVG 硬编码位置还原（x=30+16*col, y=18+16*row，row 0..6 对应 y 18,34,50,66,82,98,114）
+          function set(col, row, v) { if (row >= 0 && row < rows && col >= 0 && col < cols) data[row][col] = v; }
+          // 原文件中只有少量格子有颜色，逐一还原
+          set(6, 2, 1);   // x=126 y=50  FCEFB4
+          set(14, 2, 1);  // x=254 y=50
+          set(14, 5, 1);  // x=254 y=98
+          set(15, 4, 1);  // x=270 y=66
+          set(15, 5, 1);  // x=270 y=98
+          set(16, 2, 1);  // x=286 y=50
+          set(16, 3, 1);  // x=286 y=66
+          set(17, 2, 1);  // x=302 y=50
+          set(17, 3, 1);  // x=302 y=66
+          set(17, 4, 1);  // x=302 y=82
+          set(18, 2, 1);  // x=318 y=34
+          set(18, 4, 1);  // x=318 y=82
+          set(21, 2, 1);  // x=366 y=50
+          set(21, 3, 1);  // x=366 y=66
+          set(21, 4, 1);  // x=366 y=82
+          set(21, 5, 1);  // x=366 y=98
+          set(24, 2, 1);  // x=414 y=50
+          set(24, 3, 1);  // x=414 y=66
+          set(24, 5, 1);  // x=414 y=98
+          set(26, 0, 2);  // x=446 y=18  F4D76B
+          set(26, 5, 1);  // x=446 y=98
+          set(27, 0, 1);  // x=462 y=18
+          set(27, 2, 1);  // x=462 y=50
+          set(27, 4, 1);  // x=462 y=82
+          set(28, 0, 3);  // x=478 y=18  E8C030
+          set(30, 2, 1);  // x=494 y=50
+          set(30, 5, 1);  // x=494 y=98
+          set(36, 2, 3);  // x=542 y=50
+          set(36, 4, 3);  // x=542 y=82
+          set(39, 1, 1);  // x=574 y=34
+          set(39, 2, 1);  // x=574 y=50
+          set(39, 3, 1);  // x=574 y=66
+          set(39, 4, 1);  // x=574 y=82
+          set(42, 2, 1);  // x=606 y=50
+          set(42, 3, 3);  // x=606 y=66
+          set(42, 4, 1);  // x=606 y=82
+          set(47, 2, 1);  // x=686 y=50
+          set(47, 3, 1);  // x=686 y=66
+          set(47, 5, 3);  // x=686 y=98
+          set(48, 0, 1);  // x=702 y=18
+          set(48, 2, 4);  // x=702 y=50  C4930D
+          set(49, 3, 2);  // x=718 y=66
+          set(49, 4, 2);  // x=718 y=82
+          set(49, 5, 1);  // x=718 y=98
+          set(50, 0, 2);  // x=734 y=18
+          set(50, 4, 4);  // x=734 y=82
+          set(51, 2, 2);  // x=750 y=50
+          set(51, 3, 2);  // x=750 y=66
+          set(51, 4, 3);  // x=750 y=82
+          set(52, 0, 1);  // x=766 y=18
+          set(53, 1, 2);  // x=782 y=34
+          set(53, 2, 2);  // x=782 y=50
+          set(54, 2, 3);  // x=798 y=50
+          set(54, 3, 3);  // x=798 y=66
+          set(54, 4, 4);  // x=798 y=82
+          set(55, 2, 1);  // x=814 y=50
+          set(55, 3, 1);  // x=814 y=66
+          set(55, 4, 1);  // x=814 y=82
+          set(56, 2, 2);  // x=830 y=50
+          set(56, 3, 2);  // x=830 y=66
+          set(56, 4, 2);  // x=830 y=82
+          set(57, 2, 1);  // x=846 y=50
+          set(57, 3, 1);  // x=846 y=66
+          set(57, 4, 1);  // x=846 y=82
+          set(57, 5, 1);  // x=846 y=98
+          set(58, 2, 1);  // x=862 y=50
+          set(58, 3, 2);  // x=862 y=66
+          set(59, 1, 4);  // x=878 y=34
+          set(59, 2, 3);  // x=878 y=50
+          set(59, 3, 3);  // x=878 y=66
+          set(59, 4, 4);  // x=878 y=82
+          set(59, 5, 3);  // x=878 y=98
+          return data;
+        })();
+
+        function renderHeatmap() {
+          var g = $("heatCells");
+          if (!g) return;
+          var html = "";
+          for (var row = 0; row < HEAT.length; row++) {
+            for (var col = 0; col < HEAT[row].length; col++) {
+              var v = HEAT[row][col];
+              var x = 30 + col * 16;
+              var y = 18 + row * 16;
+              html += "<rect x=\"" + x + "\" y=\"" + y + "\" width=\"13\" height=\"13\" rx=\"2\" fill=\"" + HEAT_COLORS[v] + "\"/>";
+            }
+          }
+          g.innerHTML = html;
+        }
+
+        /* ============ 静态文本渲染 ============ */
+        function renderTexts() {
+          var els = document.querySelectorAll("[data-i18n]");
+          for (var i = 0; i < els.length; i++) {
+            els[i].textContent = t(els[i].getAttribute("data-i18n"));
+          }
+        }
+
+        /* ============ 主题 ============ */
+        function applyTheme() {
+          rootEl.setAttribute("data-theme", theme);
+          $("themeBtn").textContent = (theme === "light") ? "🌙" : "☀️";
+          $("themeBtn").title = (theme === "light") ? "Switch to dark" : "Switch to light";
+          try { localStorage.setItem("fs_theme", theme); } catch (e) { }
+          drawRadar();
+        }
+
+        /* ============ 语言 ============ */
+        function applyLang() {
+          lang = (lang === "zh") ? "en" : "zh";
+          rootEl.setAttribute("lang", lang);
+          try { localStorage.setItem("fs_lang", lang); } catch (e) { }
+          $("langBtn").textContent = (lang === "zh") ? "EN" : "中";
+          renderTexts();
+          renderSkills();
+          renderDrawer();
+          drawRadar();
+        }
+
+        /* ============ 移动端菜单 ============ */
+        var menuToggle = $("menuToggle");
+        var mobileMenu = $("mobileMenu");
+        menuToggle.addEventListener("click", function () {
+          var open = mobileMenu.classList.toggle("open");
+          menuToggle.textContent = open ? "✕" : "☰";
+        });
+        mobileMenu.addEventListener("click", function (e) {
+          if (e.target.tagName === "A") {
+            mobileMenu.classList.remove("open");
+            menuToggle.textContent = "☰";
+          }
+        });
+
+        /* ============ 导航高亮 ============ */
+        var links = document.querySelectorAll("#mainNav a");
+        var sections = ["home", "about", "services", "works", "contact"].map(function (id) { return document.getElementById(id); });
+        function updateActive() {
+          var current = "home";
+          var pos = window.scrollY + 140;
+          sections.forEach(function (s) { if (s && s.offsetTop <= pos) current = s.id; });
+          links.forEach(function (l) { l.classList.toggle("active", l.getAttribute("href") === "#" + current); });
+          var mlinks = mobileMenu.querySelectorAll("a");
+          mlinks.forEach(function (l) { l.classList.toggle("active", l.getAttribute("href") === "#" + current); });
+        }
+        window.addEventListener("scroll", updateActive, { passive: true });
+        updateActive();
+
+        /* ============ 技能矩阵渲染 ============ */
+        function blocksHtml(score) {
+          var h = "";
+          for (var i = 1; i <= 10; i++) {
+            var cls = "blk";
+            if (i <= score) cls += " on" + (score <= 6 ? " low" : "");
+            h += "<span class=\"" + cls + "\"></span>";
+          }
+          return h;
+        }
+        function renderSkills() {
+          var grid = $("abilityCards");
+          var h = "";
+          for (var g = 0; g < SKILL_GROUPS.length; g++) {
+            var grp = SKILL_GROUPS[g];
+            h += "<div class=\"ab-card\">";
+            h += "<div class=\"ab-head\"><span class=\"ab-ico\">" + grp.ico + "</span>";
+            h += "<div><div class=\"ab-title\">" + grp[lang] + "</div><div class=\"ab-sub\">" + grp[(lang === "zh" ? "en" : "zh")] + "</div></div></div>";
+            for (var i = 0; i < grp.items.length; i++) {
+              var it = grp.items[i];
+              h += "<div class=\"ab-item\" data-g=\"" + grp.key + "\" data-k=\"" + it.key + "\" title=\"" + it[lang] + "\">";
+              h += "<span class=\"sname\">" + it[lang] + "</span>";
+              h += "<span class=\"blocks\">" + blocksHtml(it.score) + "</span>";
+              h += "<span class=\"ab-score\">" + it.score + "</span></div>";
+            }
+            h += "</div>";
+          }
+          grid.innerHTML = h;
+          var rows = grid.querySelectorAll(".ab-item");
+          for (var r = 0; r < rows.length; r++) {
+            rows[r].addEventListener("click", (function (row) {
+              return function () { openSkill(row.getAttribute("data-g"), row.getAttribute("data-k")); };
+            })(rows[r]));
+          }
+        }
+
+        /* ============ 侧边栏（使用说明） ============ */
+        function openDrawer() { $("drawer").classList.add("open"); $("mask").classList.add("show"); }
+        function closeDrawer() { $("drawer").classList.remove("open"); $("mask").classList.remove("show"); }
+        function openSkill(groupKey, skillKey) {
+          openDrawer();
+          var items = $("drawerBody").querySelectorAll(".ditem");
+          for (var i = 0; i < items.length; i++) {
+            var el = items[i];
+            var ok = (el.getAttribute("data-k") === skillKey) && (el.getAttribute("data-g") === groupKey);
+            el.classList.toggle("open", ok);
+            el.classList.toggle("active", ok);
+            if (ok) el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+          }
+        }
+        function renderDrawer() {
+          var body = $("drawerBody");
+          var h = "";
+          var groups = [
+            { key: "radar", label: t("dg_radar"), items: RADAR_DIMS.map(function (d) {
+              return { key: d.key, name: d[lang], score: d.v, def: d["def_" + lang] };
+            })}
+          ];
+          for (var g = 0; g < SKILL_GROUPS.length; g++) {
+            groups.push({ key: SKILL_GROUPS[g].key, label: SKILL_GROUPS[g][lang], items: SKILL_GROUPS[g].items.map(function (it) {
+              return { key: it.key, name: it[lang], score: it.score, def: it["def_" + lang] };
+            })});
+          }
+          for (var gi = 0; gi < groups.length; gi++) {
+            var grp = groups[gi];
+            h += "<div class=\"dg\"><div class=\"dg-t\">" + grp.label + " · " + grp.items.length + "</div>";
+            for (var ii = 0; ii < grp.items.length; ii++) {
+              var it = grp.items[ii];
+              h += "<div class=\"ditem\" data-g=\"" + grp.key + "\" data-k=\"" + it.key + "\">";
+              h += "<div class=\"ditem-h\"><span class=\"n\">" + it.name + "</span><span class=\"sc\">" + it.score + "/10</span><span class=\"ar\">▶</span></div>";
+              h += "<div class=\"ditem-b\">" + it.def + "</div></div>";
+            }
+            h += "</div>";
+          }
+          body.innerHTML = h;
+          var heads = body.querySelectorAll(".ditem-h");
+          for (var hi = 0; hi < heads.length; hi++) {
+            heads[hi].addEventListener("click", (function (head) {
+              return function () {
+                var item = head.parentNode;
+                var wasOpen = item.classList.contains("open");
+                var siblings = item.parentNode.querySelectorAll(".ditem");
+                for (var s = 0; s < siblings.length; s++) siblings[s].classList.remove("open");
+                if (!wasOpen) item.classList.add("open");
+              };
+            })(heads[hi]));
+          }
+        }
+        $("drawerTab").addEventListener("click", function () {
+          if ($("drawer").classList.contains("open")) closeDrawer(); else openDrawer();
+        });
+        $("drawerClose").addEventListener("click", closeDrawer);
+        $("mask").addEventListener("click", closeDrawer);
+
+        /* ============ 侧边栏仅在能力区块可见 ============ */
+        var drawerTab = $("drawerTab");
+        function updateDrawerVisibility() {
+          var sec = $("services");
+          if (!sec) return;
+          var r = sec.getBoundingClientRect();
+          var vh = window.innerHeight || 600;
+          var visible = r.top < vh && r.bottom > 0;
+          drawerTab.style.display = visible ? "flex" : "none";
+          if (!visible && $("drawer").classList.contains("open")) closeDrawer();
+        }
+        window.addEventListener("scroll", updateDrawerVisibility, { passive: true });
+        window.addEventListener("resize", updateDrawerVisibility);
+
+        /* ============ 雷达图（Canvas 确定性绘制） ============ */
+        var RADAR_THEME = {
+          light: { grid: "#E6E1D6", axis: "#C9C1AE", text: "#1A1A1A", label: "#5C5C5C", fill: "rgba(244,196,48,0.22)", stroke: "#E8B62A", point: "#F4C430", hover: "#C4930D" },
+          dark: { grid: "#3B362C", axis: "#57503F", text: "#F2EDE4", label: "#B7B0A3", fill: "rgba(240,195,60,0.18)", stroke: "#F0C33C", point: "#F0C33C", hover: "#FCEFB4" }
+        };
+        var canvas = $("radarCanvas");
+        var tip = $("radarTip");
+        var ctx = canvas.getContext("2d");
+        var radarPts = [];
+        var hoverIdx = -1;
+        var N = RADAR_DIMS.length;
+
+        function sizeCanvas() {
+          var box = canvas.parentNode;
+          var w = box.clientWidth || 600;
+          var h = box.clientHeight || 360;
+          var dpr = window.devicePixelRatio || 1;
+          canvas.width = Math.round(w * dpr);
+          canvas.height = Math.round(h * dpr);
+          canvas.style.width = w + "px";
+          canvas.style.height = h + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          return { w: w, h: h };
+        }
+        function drawRadar() {
+          var box = canvas.parentNode;
+          if (!box) return;
+          var S = sizeCanvas();
+          var w = S.w, h = S.h;
+          ctx.clearRect(0, 0, w, h);
+          var C = RADAR_THEME[theme];
+          var cx = w * 0.5, cy = h * 0.52;
+          var r = Math.min(w, h) / 2 - 52;
+          if (r < 60) r = 60;
+          var maxV = 10;
+          function pt(i, radius) {
+            var ang = -Math.PI / 2 + i * 2 * Math.PI / N;
+            return { x: cx + radius * Math.cos(ang), y: cy + radius * Math.sin(ang) };
+          }
+          ctx.lineWidth = 1;
+          for (var ring = 1; ring <= 5; ring++) {
+            var rr = r * ring / 5;
+            ctx.beginPath();
+            for (var i = 0; i <= N; i++) {
+              var p = pt(i % N, rr);
+              if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
+            }
+            ctx.strokeStyle = C.grid;
+            ctx.stroke();
+          }
+          for (var a = 0; a < N; a++) {
+            var p0 = pt(a, 0), p1 = pt(a, r);
+            ctx.beginPath();
+            ctx.moveTo(p0.x, p0.y);
+            ctx.lineTo(p1.x, p1.y);
+            ctx.strokeStyle = C.grid;
+            ctx.stroke();
+          }
+          radarPts = [];
+          ctx.beginPath();
+          for (var d = 0; d < N; d++) {
+            var pp = pt(d, r * RADAR_DIMS[d].v / maxV);
+            radarPts.push(pp);
+            if (d === 0) ctx.moveTo(pp.x, pp.y); else ctx.lineTo(pp.x, pp.y);
+          }
+          ctx.closePath();
+          ctx.fillStyle = C.fill;
+          ctx.fill();
+          ctx.strokeStyle = C.stroke;
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+          for (var d2 = 0; d2 < N; d2++) {
+            var q = radarPts[d2];
+            ctx.beginPath();
+            ctx.arc(q.x, q.y, (d2 === hoverIdx) ? 6.5 : 4.5, 0, Math.PI * 2);
+            ctx.fillStyle = (d2 === hoverIdx) ? C.hover : C.point;
+            ctx.fill();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = (theme === "light") ? "#fff" : "#221E18";
+            ctx.stroke();
+          }
+          ctx.font = "600 12px Inter, 'Helvetica Neue', Arial, sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          for (var d3 = 0; d3 < N; d3++) {
+            var lp = pt(d3, r + 24);
+            ctx.fillStyle = C.label;
+            ctx.fillText(RADAR_DIMS[d3][lang], lp.x, lp.y - 7);
+            ctx.fillStyle = C.text;
+            ctx.font = "800 13px Inter, 'Helvetica Neue', Arial, sans-serif";
+            ctx.fillText(String(RADAR_DIMS[d3].v), lp.x, lp.y + 10);
+            ctx.font = "600 12px Inter, 'Helvetica Neue', Arial, sans-serif";
+          }
+        }
+        function findHover(e) {
+          var rect = canvas.getBoundingClientRect();
+          var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+          var best = -1, bestD = 22;
+          for (var i = 0; i < radarPts.length; i++) {
+            var dx = radarPts[i].x - mx, dy = radarPts[i].y - my;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < bestD) { bestD = dist; best = i; }
+          }
+          return best;
+        }
+        canvas.addEventListener("mousemove", function (e) {
+          var idx = findHover(e);
+          if (idx >= 0) {
+            hoverIdx = idx;
+            var d = RADAR_DIMS[idx];
+            var rect = canvas.getBoundingClientRect();
+            tip.innerHTML = "<b>" + d[lang] + "</b> · " + d.v + "/10";
+            tip.style.display = "block";
+            var tx = radarPts[idx].x + 14, ty = radarPts[idx].y - 12;
+            if (tx + 150 > rect.width) tx = radarPts[idx].x - 160;
+            tip.style.left = tx + "px";
+            tip.style.top = ty + "px";
+            drawRadar();
+          } else if (hoverIdx >= 0) {
+            hoverIdx = -1;
+            tip.style.display = "none";
+            drawRadar();
+          }
+        });
+        canvas.addEventListener("mouseleave", function () {
+          hoverIdx = -1;
+          tip.style.display = "none";
+          drawRadar();
+        });
+        canvas.addEventListener("click", function (e) {
+          var idx = findHover(e);
+          if (idx >= 0) openSkill("radar", RADAR_DIMS[idx].key);
+        });
+        var resizeTimer = null;
+        window.addEventListener("resize", function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(drawRadar, 120);
+        });
+
+        /* ============ 初始化 ============ */
+        rootEl.setAttribute("data-theme", theme);
+        rootEl.setAttribute("lang", lang);
+        $("langBtn").textContent = (lang === "zh") ? "EN" : "中";
+        $("themeBtn").textContent = (theme === "light") ? "🌙" : "☀️";
+        renderTexts();
+        renderHeatmap();
+        renderSkills();
+        renderDrawer();
+        drawRadar();
+        updateDrawerVisibility();
+
+        $("langBtn").addEventListener("click", applyLang);
+        $("themeBtn").addEventListener("click", function () {
+          theme = (theme === "light") ? "dark" : "light";
+          applyTheme();
+        });
+
+      } catch (err) {
+        document.body.insertAdjacentHTML("beforeend",
+          "<div style=\"padding:14px;font-size:13px;color:#B42318;background:#FEE4E2;border-radius:10px;margin:16px;\">" +
+          "页面脚本运行异常：" + String(err && err.message ? err.message : err) + "</div>");
+      }
+    })();
   </script>
 </body>
 
